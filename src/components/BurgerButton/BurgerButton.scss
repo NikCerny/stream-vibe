@@ -4,15 +4,27 @@
     background-color: var(--color-black-10);
     border: var(--border-width-m) solid var(--color-black-15);
     border-radius: var(--border-radius-xs);
-
+    padding: 0;
 
     @include hover {
         background-color: var(--color-red-60);
         border-color: transparent;
     }
 
-    &__lines {
+    &__icon {
         fill: var(--color-white);
     }
-    
+
+    &__icon--close {
+        display: none;
+    }
+
+    &.is-active {
+        .burger-button__icon--burger {
+            display: none;
+        }
+        .burger-button__icon--close {
+            display: flex;
+        }
+    }
 }
