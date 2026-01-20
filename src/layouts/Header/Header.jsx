@@ -28,29 +28,37 @@ const Header = (props) => {
   ))
 
   return (
-    <header className="header">
+    <header className="header" data-js-overlay-menu="">
       <div className="header__inner container">
         <Logo loading="eager" className="header__logo"></Logo>
-        <nav className="header__menu">
-          <ul className="header__menu-list">{menuList}</ul>
-        </nav>
-        <div className="header__actions">
-          <Button
-            className="header__button"
-            label="Search"
-            isLabelHidden
-            iconName="search"
-            mode="transparent"
-          ></Button>
-          <Button
-            className="header__button"
-            label="Notifications"
-            isLabelHidden
-            iconName="notification"
-            mode="transparent"
-          ></Button>
-        </div>
-        <BurgerButton className="header__burger-button"></BurgerButton>
+        <dialog
+          className="header__overlay-menu-dialog"
+          data-js-overlay-menu-dialog=""
+        >
+          <nav className="header__menu">
+            <ul className="header__menu-list">{menuList}</ul>
+          </nav>
+          <div className="header__actions">
+            <Button
+              className="header__button"
+              label="Search"
+              isLabelHidden
+              iconName="search"
+              mode="transparent"
+            ></Button>
+            <Button
+              className="header__button"
+              label="Notifications"
+              isLabelHidden
+              iconName="notification"
+              mode="transparent"
+            ></Button>
+          </div>
+        </dialog>
+        <BurgerButton
+          className="header__burger-button visible-tablet"
+          extraAttrs={{ "data-js-overlay-menu-burger-button": "" }}
+        ></BurgerButton>
       </div>
     </header>
   )
