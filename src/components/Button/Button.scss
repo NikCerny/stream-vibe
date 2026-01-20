@@ -38,7 +38,7 @@
         background-color: transparent;
 
         &:has(.button__icon:only-child){
-            @include square(44px);
+            @include square(fluid-to-laptop(55,44));
 
             .button__icon {
                 --iconSize: #{fluid-to-laptop(34,24)};
