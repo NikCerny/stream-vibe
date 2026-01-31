@@ -1,3 +1,3 @@
-import OverLayMenu from "@/modules/overlayMenu";
+import OverLayMenu from "@/modules/OverlayMenu";
 
 new OverLayMenu()

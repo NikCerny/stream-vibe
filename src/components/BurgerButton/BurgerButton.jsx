@@ -13,7 +13,7 @@ const BurgerButton = (props) => {
       title={title}
       {...extraAttrs}
     >
-      <span className="burger-button__icon burger-button__icon--burger">
+      <span className="burger-button__icon">
         <svg
           width="18"
           height="12"
