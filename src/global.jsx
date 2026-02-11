@@ -5,13 +5,13 @@ import Content from "@/layouts/Content"
 import Footer from "@/layouts/Footer"
 
 export default function (props) {
-  const { children, title, url } = props
+  const { children, title, url, isHeaderFixed } = props
 
   return (
     <>
       <Head htmlAttributes={{ lang: "en" }}>
         <title>Stream Vibe | {title}</title>
-        <script src='/src/main.js' type="module"></script>
+        <script src="/src/main.js" type="module"></script>
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -31,7 +31,7 @@ export default function (props) {
         />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
-      <Header url={url}></Header>
+      <Header url={url} isFixed={isHeaderFixed}></Header>
       <Content>{children}</Content>
       <Footer></Footer>
     </>

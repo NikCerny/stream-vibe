@@ -1,0 +1,25 @@
+  .play-button {
+        @include square(fluid-to-laptop(470,300));
+        background-color: transparent;
+        border: none;
+        padding: 0;
+
+        &-ring {
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(6px);
+            clip-path: url(#bgblur_0_90_250_clip_path);
+        }
+
+        &-icon {
+            height:100%;
+            width:100%;
+            backdrop-filter: blur(6px);
+            clip-path:url(#bgblur_1_90_250_clip_path);
+        }
+
+        @include laptop {
+            @include square(fluid(300,200));
+        }
+
+    }
