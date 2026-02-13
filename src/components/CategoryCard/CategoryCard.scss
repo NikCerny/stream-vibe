@@ -43,6 +43,7 @@
   &__image-wrapper {
     position: relative;
     border-radius: var(--border-radius-m);
+    overflow: hidden;
   }
 
   &__image-wrapper::after {
@@ -59,7 +60,7 @@
     width: 100%;
     height: fluid(124,67);
     object-fit: cover;
-    border-radius: inherit;
+
 
     @include laptop {
       border-radius: var(--border-radius-xs);
