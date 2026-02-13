@@ -19,10 +19,15 @@
             align-items: end;
         }
         
-        &__info {
-            display: grid;
-            row-gap: fluid-to-laptop(14, 10);
-        }
+    }
 
+    &__info {
+        display: grid;
+        row-gap: fluid(14, 8);
+    }
+
+    &__body {
+        display: inline-flex;
+        gap: fluid-to-laptop(30, 20);
     }
 }

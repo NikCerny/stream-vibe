@@ -1,5 +1,7 @@
 import "./Categories.scss"
 import Section from "@/layouts/Section"
+import CategoryCard from "@/components/CategoryCard"
+import categoryItems from "./categoryItems"
 
 const Categories = () => {
   return (
@@ -14,7 +16,9 @@ const Categories = () => {
       }
       isActionsHiddenOnMobile
     >
-      TEXT EXAMPLE
+      {categoryItems.map((categoryItem, index) => (
+        <CategoryCard {...categoryItem} key={index} />
+      ))}
     </Section>
   )
 }
