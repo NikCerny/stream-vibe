@@ -45,6 +45,64 @@ const categoryItems = [
     ],
   },
 
+  {
+    title: 'NextExample1',
+    images: [
+      '/src/assets/images/categories/drama/1.jpg',
+      '/src/assets/images/categories/drama/2.jpg',
+      '/src/assets/images/categories/drama/3.jpg',
+      '/src/assets/images/categories/drama/4.jpg',
+    ],
+  },
+  {
+    title: 'NextExample2',
+    images: [
+      '/src/assets/images/categories/drama/1.jpg',
+      '/src/assets/images/categories/drama/2.jpg',
+      '/src/assets/images/categories/drama/3.jpg',
+      '/src/assets/images/categories/drama/4.jpg',
+    ],
+  },
+
+  {
+    title: 'NextExample3',
+    images: [
+      '/src/assets/images/categories/drama/1.jpg',
+      '/src/assets/images/categories/drama/2.jpg',
+      '/src/assets/images/categories/drama/3.jpg',
+      '/src/assets/images/categories/drama/4.jpg',
+    ],
+  },
+
+  {
+    title: 'NextExample4',
+    images: [
+      '/src/assets/images/categories/drama/1.jpg',
+      '/src/assets/images/categories/drama/2.jpg',
+      '/src/assets/images/categories/drama/3.jpg',
+      '/src/assets/images/categories/drama/4.jpg',
+    ],
+  },
+
+  {
+    title: 'NextExample5',
+    images: [
+      '/src/assets/images/categories/drama/1.jpg',
+      '/src/assets/images/categories/drama/2.jpg',
+      '/src/assets/images/categories/drama/3.jpg',
+      '/src/assets/images/categories/drama/4.jpg',
+    ],
+  },
+
+  {
+    title: 'NextExample6',
+    images: [
+      '/src/assets/images/categories/drama/1.jpg',
+      '/src/assets/images/categories/drama/2.jpg',
+      '/src/assets/images/categories/drama/3.jpg',
+      '/src/assets/images/categories/drama/4.jpg',
+    ],
+  },
 
 ]
 
