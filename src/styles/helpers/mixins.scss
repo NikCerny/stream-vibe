@@ -1,0 +1,113 @@
+@use "functions" as *;
+
+@mixin hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@mixin show {
+  opacity: 1;
+  visibility: visible;
+}
+
+@mixin flex-center($isInline: false) {
+  @if ($isInline) {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin abs-cover {
+  position: absolute;
+  inset: 0;
+}
+
+@mixin abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+@mixin abs-x {
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+}
+
+@mixin abs-y {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+}
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+@mixin focus-visible {
+  outline: 2px dashed var(--color-white);
+  outline-offset: 4px;
+  transition-duration: 0s !important;
+}
+
+@mixin disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@mixin extended-click-area($width: 44, $height: $width) {
+  position: relative;
+
+  &::before {
+    content: "";
+    @include abs-center;
+    width: $width;
+    height: $height;
+  }
+}
+
+@mixin extended-click-area-padding(
+  $padding-block,
+  $padding-inline: $padding-block
+) {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset-block: calc(0px - #{$padding-block});
+    inset-inline: calc(0px - #{$padding-inline});
+  }
+}
+
+@mixin reset-link {
+  &,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@mixin reset-button {
+  padding-inline: 0;
+  background-color: transparent;
+  border: none;
+}
