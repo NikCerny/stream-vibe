@@ -5,7 +5,7 @@ import Content from "@/layouts/Content";
 import Footer from "@/layouts/Footer";
 
 export default function (props) {
-  const { children, title } = props;
+  const { children, title, url } = props;
 
   return (
     <>
@@ -31,7 +31,7 @@ export default function (props) {
         />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
-      <Header></Header>
+      <Header url={url}></Header>
       <Content>{children}</Content>
       <Footer></Footer>
     </>

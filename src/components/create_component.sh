@@ -6,6 +6,7 @@ if [ -z "$1" ]; then
 fi
 
 NAME=$1
+LOWER_NAME=$(echo "$NAME" | tr '[:upper:]' '[:lower:]')
 DIR="./$NAME"
 
 
@@ -23,7 +24,9 @@ cat <<EOF > "$DIR/$NAME.jsx"
 import './$NAME.scss'
 
 const $NAME = (props) => {
-
+  return (
+      <$LOWER_NAME className="$NAME">{props.children}</$LOWER_NAME>
+  )
 }
 
 export default $NAME
