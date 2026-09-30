@@ -1,0 +1,5 @@
+.button {
+  @include reset-button;
+  @include flex-center(true);
+  color: var(--color-white);
+}
