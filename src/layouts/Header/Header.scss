@@ -1,4 +1,78 @@
 .header {
+  padding-block: fluid-desktop-laptop(22, 18);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  border-bottom: var(--border-width-s) solid transparent;
 
-    
+  @keyframes scrolling-header {
+    to {
+      background-color: var(--color-black-10);
+      border-color: var(--color-red-45);
+      padding-block: 10px;
+    }
+  }
+
+  @supports (animation-timeline: scroll()) and (animation-range: 1px 2px) {
+    animation-name: scrolling-header;
+    animation-duration: 1ms;
+    animation-fill-mode: both;
+    animation-timeline: scroll();
+    animation-range: 50px 200px;
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 5px;
+  }
+
+  &__menu {
+    &-list {
+      display: flex;
+      align-items: center;
+      padding: fluid-desktop-laptop(10, 8);
+      border-radius: var(--border-radius-l);
+      border: var(--border-width-l) solid var(--color-black-12);
+      background-color: var(--color-black-06);
+      gap: 6px;
+
+      @include laptop {
+        border-radius: var(--border-radius-m);
+        border-width: var(--border-width-m);
+      }
+    }
+    &-link {
+      color: var(--color-gray-75);
+      padding-block: fluid-desktop-laptop(14, 12);
+      padding-inline: fluid-desktop-laptop(12, 5);
+      border-radius: var(--border-radius-s);
+      &.is-active {
+        border: 1px solid var(--color-black-10);
+        padding-inline: fluid-desktop-laptop(24, 20);
+        background: var(--color-black-10);
+        color: var(--color-white);
+        font-weight: 500;
+        pointer-events: none;
+      }
+    }
+    &-item:first-child:not(:has(> .is-active)) {
+      padding-left: 18px;
+    }
+    &-item:last-child:not(:has(> .is-active)) {
+      padding-right: 18px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__logo {
+    width: fluid(200, 116);
+  }
 }

@@ -1,12 +1,12 @@
 .icon {
-  --iconWrapper: #{fluid-desktop-laptop(34, 24)};
+  --iconWrapper: #{fluid-desktop-laptop(28, 24)};
+  --iconSize: #{fluid-desktop-laptop(18, 16)};
 
   @include square(var(--iconWrapper));
 
   @include flex-center(true);
 
   & > svg {
-    --iconSize: #{fluid-desktop-laptop(28, 20)};
     @include square(var(--iconSize));
   }
 }

@@ -44,7 +44,7 @@
 
   --font-family-base: "Manrope", sans-serif;
 
-  --container-width: #{fluid-to-laptop(
+  --container-width: #{fluid-desktop-laptop(
       $container-desktop-width,
       $container-laptop-width
     )};
