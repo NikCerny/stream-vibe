@@ -37,25 +37,31 @@ const Header = (props) => {
           loading="eager"
           label="Home"
         ></Link>
-        <nav className="header__menu">
-          <ul className="header__menu-list">{renderItems}</ul>
-        </nav>
-        <div className="header__actions">
-          <Button
-            className="header__button"
-            label="Search"
-            isLabelHidden
-            iconName="search"
-            mode="transparent"
-          ></Button>
-          <Button
-            className="header__button"
-            label="Notifications"
-            isLabelHidden
-            iconName="notification"
-            mode="transparent"
-          ></Button>
-        </div>
+        <dialog
+          className="header__overlay-menu-dialog"
+          data-js-overlay-menu-dialog=""
+          open
+        >
+          <nav className="header__menu">
+            <ul className="header__menu-list">{renderItems}</ul>
+          </nav>
+          <div className="header__actions">
+            <Button
+              className="header__button"
+              label="Search"
+              isLabelHidden
+              iconName="search"
+              mode="transparent"
+            ></Button>
+            <Button
+              className="header__button"
+              label="Notifications"
+              isLabelHidden
+              iconName="notification"
+              mode="transparent"
+            ></Button>
+          </div>
+        </dialog>
         <BurgerButton className="header__burger-button visible-mobile"></BurgerButton>
       </div>
     </header>

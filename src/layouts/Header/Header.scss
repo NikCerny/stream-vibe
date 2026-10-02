@@ -30,18 +30,31 @@
   }
 
   &__menu {
+    @include mobile {
+      margin-block: auto;
+      overflow-y: auto;
+    }
     &-list {
       display: flex;
       align-items: center;
-      padding: fluid-desktop-laptop(10, 8);
-      border-radius: var(--border-radius-l);
-      border: var(--border-width-l) solid var(--color-black-12);
-      background-color: var(--color-black-06);
       gap: 6px;
+
+      @include mobile-above {
+        padding: fluid-desktop-laptop(10, 8);
+        border-radius: var(--border-radius-l);
+        border: var(--border-width-l) solid var(--color-black-12);
+        background-color: var(--color-black-06);
+      }
 
       @include laptop {
         border-radius: var(--border-radius-m);
         border-width: var(--border-width-m);
+      }
+
+      @include mobile {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
       }
     }
     &-link {
@@ -58,11 +71,16 @@
         pointer-events: none;
       }
     }
-    &-item:first-child:not(:has(> .is-active)) {
-      padding-left: 18px;
+    @include mobile-above {
+      &-item:first-child:not(:has(> .is-active)) {
+        padding-left: 18px;
+      }
+      &-item:last-child:not(:has(> .is-active)) {
+        padding-right: 18px;
+      }
     }
-    &-item:last-child:not(:has(> .is-active)) {
-      padding-right: 18px;
+    @include mobile {
+      font-size: 20px;
     }
   }
 
@@ -74,5 +92,30 @@
 
   &__logo {
     width: fluid(200, 116);
+  }
+
+  &__overlay-menu-dialog {
+    @include mobile-above {
+      display: contents;
+    }
+    @include mobile {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      background-color: var(--color-black-20);
+      padding: 20px;
+      &[open] {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        row-gap: 15px;
+      }
+    }
+  }
+
+  &__burger-button {
+    align-self: flex-end;
   }
 }

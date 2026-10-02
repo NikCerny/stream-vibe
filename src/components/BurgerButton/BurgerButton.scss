@@ -13,7 +13,7 @@
   &__line {
     position: absolute;
     top: 50%;
-    right: 15px;
+    right: 12px;
     left: 15px;
     border-radius: 10px;
     background-color: currentColor;
@@ -31,7 +31,7 @@
     }
 
     &:last-child {
-      right: 12px;
+      right: 7px;
       transform: translateY(calc(-50% + 6.5px)) scaleX(0.55);
     }
   }
