@@ -2,11 +2,11 @@
   @include reset-button;
   @include square(51px);
   padding-inline: 15px;
-  
+
   color: white;
   border: var(--border-width-m) solid var(--color-black-15);
   position: relative;
-  
+
   background-color: var(--color-black-10);
   border-radius: var(--border-radius-xs);
 
@@ -37,7 +37,6 @@
   }
 
   &.is-active {
-    
     .burger-button__line {
       &:nth-child(1) {
         transform: translateY(-50%) rotate(45deg);
@@ -48,7 +47,7 @@
       }
 
       &:nth-child(3) {
-        right: 15px;
+        right: 12px;
         transform: translateY(-50%) rotate(-45deg) scaleX(1);
       }
     }

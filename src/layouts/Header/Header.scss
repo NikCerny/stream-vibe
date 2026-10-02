@@ -106,11 +106,22 @@
       border: none;
       background-color: var(--color-black-20);
       padding: 20px;
+      transition-duration: var(--transition-duration-longer);
+      transition-behavior: allow-discrete;
       &[open] {
         display: flex;
         flex-direction: column-reverse;
         justify-content: flex-end;
         row-gap: 15px;
+
+        @starting-style {
+          opacity: 0;
+          translate: 50%;
+        }
+      }
+      &:not([open]) {
+        opacity: 0;
+        translate: 50%;
       }
     }
   }

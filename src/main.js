@@ -1,1 +1,3 @@
-console.log("plug main js delete later");
+import OverlayMenu from "./modules/OverlayMenu";
+
+new OverlayMenu();

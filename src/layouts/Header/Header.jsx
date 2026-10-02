@@ -28,7 +28,7 @@ const Header = (props) => {
   ));
 
   return (
-    <header className="header">
+    <header className="header" data-js-overlay-menu="">
       <div className="header__inner container">
         <Link
           className="header__logo logo"
@@ -40,7 +40,6 @@ const Header = (props) => {
         <dialog
           className="header__overlay-menu-dialog"
           data-js-overlay-menu-dialog=""
-          open
         >
           <nav className="header__menu">
             <ul className="header__menu-list">{renderItems}</ul>
@@ -62,7 +61,10 @@ const Header = (props) => {
             ></Button>
           </div>
         </dialog>
-        <BurgerButton className="header__burger-button visible-mobile"></BurgerButton>
+        <BurgerButton
+          className="header__burger-button visible-mobile"
+          dataJsAttrs={{ "data-js-overlay-menu-burger-button": "" }}
+        ></BurgerButton>
       </div>
     </header>
   );
