@@ -1,0 +1,11 @@
+.socials {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px fluid-desktop-laptop(14, 10);
+  }
+
+  &__link {
+    border-radius: fluid-desktop-laptop(8,6);
+  }
+}

@@ -1,5 +1,7 @@
 import classNames from "classnames";
+import Icon from "@/components/Icon";
 import "./Link.scss";
+
 
 const Link = (props) => {
   const {
@@ -10,9 +12,13 @@ const Link = (props) => {
     label = "Home",
     href = "/",
     target,
+    iconName,
+    hasFillIcon = false,
+    mode,
   } = props;
   const linkProps = { href, target };
   const title = isLabelHidden ? label : undefined;
+  const modeClass = mode ? `button--${mode}` : undefined;
 
   const logoComponent = hasLogo && (
     <img
@@ -25,14 +31,19 @@ const Link = (props) => {
     ></img>
   );
 
+  const iconComponent = iconName && (
+    <Icon className="link__icon" name={iconName} hasFill={hasFillIcon}></Icon>
+  );
+
   return (
     <a
-      className={classNames(className, { "link": !hasLogo })}
+      className={classNames(className, { link: !hasLogo }, modeClass)}
       title={title}
       aria-label={title}
       {...linkProps}
     >
       {logoComponent}
+      {iconComponent}
     </a>
   );
 };

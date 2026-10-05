@@ -4,4 +4,9 @@
     color: var(--color-white);
     background-color: var(--color-red-45);
   }
+
+  & .icon {
+    --iconWrapper: #{fluid-desktop-laptop(56, 44)};
+    --iconSize: #{fluid-desktop-laptop(24, 20)};
+  }
 }

@@ -14,7 +14,7 @@ const Header = (props) => {
     { label: "Subscriptions", href: "/subscriptions" },
   ];
 
-  const renderItems = menuItems.map(({ label, href }) => (
+  const createItems = menuItems.map(({ label, href }) => (
     <li className="header__menu-item" key={href}>
       <a
         href={href}
@@ -42,7 +42,7 @@ const Header = (props) => {
           data-js-overlay-menu-dialog=""
         >
           <nav className="header__menu">
-            <ul className="header__menu-list">{renderItems}</ul>
+            <ul className="header__menu-list">{createItems}</ul>
           </nav>
           <div className="header__actions">
             <Button
