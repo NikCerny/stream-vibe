@@ -5,7 +5,7 @@ import Content from "@/layouts/Content";
 import Footer from "@/layouts/Footer";
 
 export default function (props) {
-  const { children, title, url } = props;
+  const { children, title, url, isPositionFixed } = props;
 
   return (
     <>
@@ -31,7 +31,7 @@ export default function (props) {
         />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
-      <Header url={url}></Header>
+      <Header url={url} isHeaderPositionFixed={isPositionFixed}></Header>
       <Content>{children}</Content>
       <Footer></Footer>
     </>

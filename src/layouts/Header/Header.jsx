@@ -5,7 +5,7 @@ import Link from "@/components/Link";
 import BurgerButton from "@/components/BurgerButton";
 
 const Header = (props) => {
-  const { url } = props;
+  const { url, isHeaderPositionFixed } = props;
 
   const menuItems = [
     { label: "Home", href: "/" },
@@ -27,8 +27,10 @@ const Header = (props) => {
     </li>
   ));
 
+  const isFixed = isHeaderPositionFixed ? "is-fixed" : "";
+
   return (
-    <header className="header" data-js-overlay-menu="">
+    <header className={classNames("header", isFixed)} data-js-overlay-menu="">
       <div className="header__inner container">
         <Link
           className="header__logo logo"

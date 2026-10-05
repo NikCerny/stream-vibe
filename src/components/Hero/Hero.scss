@@ -1,0 +1,48 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  @include mobile {
+    min-height: 640px;
+  }
+
+  &__pano {
+    @include flex-center;
+    flex-grow: 1;
+    flex-shrink: 0;
+    @include mobile-above {
+      min-height: fluid-desktop-laptop(860, 700);
+    }
+    --heroGradientHeight: #{calc((581/860) * 100%)};
+    background:
+      linear-gradient(180deg, #141414 0%, rgba(20, 20, 20, 0) 100%) 50% 0 / 100%
+        var(--heroGradientHeight) no-repeat,
+      linear-gradient(180deg, rgba(20, 20, 20, 0) 0%, #141414 100%) 50% 101% /
+        100% var(--heroGradientHeight) no-repeat,
+      url("../../assets/images/hero-pano.jpg") center / cover no-repeat;
+    position: relative;
+  }
+
+  &__play-button {
+    @include reset-button;
+    @include square(fluid(470, 200));
+  }
+
+  &__body-inner {
+    max-width: 1096px;
+    @include mobile-s {
+      padding-inline: 0;
+    }
+  }
+
+  &__title {
+    margin-bottom: fluid-desktop-laptop(14, 10);
+    margin-top: -1em;
+    position: relative;
+  }
+
+  &__description {
+    margin-bottom: fluid(50, 30);
+  }
+}

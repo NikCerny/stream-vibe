@@ -1,11 +1,14 @@
+import Hero from "@/components/Hero";
+
 export const metadata = {
   title: "Home",
+  isPositionFixed: true,
 };
 
 export default function () {
   return (
     <>
-      <h1>Main page h1</h1>
+      <Hero></Hero>
     </>
   );
 }

@@ -6,6 +6,10 @@
   width: 100%;
   border-bottom: var(--border-width-s) solid transparent;
 
+  &.is-fixed {
+    position: fixed;
+  }
+
   @keyframes scrolling-header {
     to {
       background-color: var(--color-black-10);
