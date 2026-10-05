@@ -1,0 +1,29 @@
+.section {
+  display: grid;
+  row-gap: fluid(80, 40);
+  padding-bottom: fluid(150, 80);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 10px;
+    align-items: center;
+
+    &:has(.section__subtitle) {
+      .section__actions {
+        align-self: flex-end;
+      }
+    }
+
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: 20px;
+    }
+  }
+
+  &__info {
+    display: grid;
+    row-gap: fluid-desktop-laptop(14, 10);
+  }
+}

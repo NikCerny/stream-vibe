@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  padding-bottom: fluid(200, 100);
   @include mobile {
     min-height: 640px;
   }
