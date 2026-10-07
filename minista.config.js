@@ -1,4 +1,10 @@
-import { defineConfig, pluginSsg, pluginBundle, pluginSprite } from "minista";
+import {
+  defineConfig,
+  pluginSsg,
+  pluginBundle,
+  pluginSprite,
+  pluginImage,
+} from "minista";
 import path from "path";
 
 export default defineConfig(({ command }) => ({
@@ -8,6 +14,8 @@ export default defineConfig(({ command }) => ({
       src: ["/src/global.jsx", "/src/pages/**/*.{tsx,jsx,mdx}"],
     }),
     pluginSprite(),
+    pluginImage(),
+    ,
   ],
   root: "",
   base: command === "serve" ? "/" : "/stream-vibe/",
