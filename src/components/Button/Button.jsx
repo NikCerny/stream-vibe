@@ -12,6 +12,7 @@ const Button = (props) => {
     iconName,
     hasFillIcon = false,
     iconPosition = "before", // || after
+    dataJsAttrs
   } = props;
 
   const title = isLabelHidden ? label : undefined;
@@ -26,6 +27,7 @@ const Button = (props) => {
       title={title}
       aria-label={title}
       type={type}
+      {...dataJsAttrs}
     >
       {iconPosition === "before" && iconComponent}
       {!isLabelHidden && <span className="button__label">{label}</span>}
