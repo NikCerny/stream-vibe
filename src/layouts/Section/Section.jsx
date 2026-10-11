@@ -7,7 +7,7 @@ const Section = (props) => {
     title,
     titleId,
     description,
-    actions,
+    actions = false,
     isActionsMobileHidden = false,
     children,
   } = props;

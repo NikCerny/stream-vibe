@@ -1,0 +1,22 @@
+.grid {
+  --gridCols: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--gridCols), 1fr);
+  gap: fluid-desktop-laptop(30, 20);
+
+  &--2 {
+    --gridCols: 2;
+  }
+
+  &--3 {
+    --gridCols: 3;
+
+    @include tablet {
+      --gridCols: 2;
+    }
+
+    @include mobile {
+      --gridCols: 1;
+    }
+  }
+}
