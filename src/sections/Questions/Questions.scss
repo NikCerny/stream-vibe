@@ -1,0 +1,7 @@
+.questions {
+  &__button {
+    @include hover {
+      background-color: var(--color-red-60);
+    }
+  }
+}

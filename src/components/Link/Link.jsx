@@ -2,7 +2,6 @@ import classNames from "classnames";
 import Icon from "@/components/Icon";
 import "./Link.scss";
 
-
 const Link = (props) => {
   const {
     hasLogo = false,
@@ -15,6 +14,7 @@ const Link = (props) => {
     iconName,
     hasFillIcon = false,
     mode,
+    content = "",
   } = props;
   const linkProps = { href, target };
   const title = isLabelHidden ? label : undefined;
@@ -37,13 +37,14 @@ const Link = (props) => {
 
   return (
     <a
-      className={classNames(className, { link: !hasLogo }, modeClass)}
+      className={classNames({ link: !hasLogo }, className, modeClass)}
       title={title}
       aria-label={title}
       {...linkProps}
     >
       {logoComponent}
       {iconComponent}
+      {content}
     </a>
   );
 };

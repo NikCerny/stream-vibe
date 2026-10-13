@@ -8,6 +8,7 @@
   background-color: var(--color-red-45);
   border-radius: var(--border-radius-s);
   user-select: none;
+  text-wrap: nowrap;
 
   &:has(.button__icon:only-child) {
     padding: 0;
