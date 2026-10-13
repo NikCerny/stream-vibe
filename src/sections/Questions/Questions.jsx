@@ -1,8 +1,8 @@
 import Link from "@/components/Link";
 import "./Questions.scss";
 import Section from "@/layouts/Section";
+import AccordionGroup from "@/components/AccordionGroup";
 import Accordion from "@/components/Accordion";
-import AccordionItem from "@/components/AccordionItem";
 
 const Questions = () => {
   const title = "Frequently Asked Questions";
@@ -65,17 +65,17 @@ const Questions = () => {
       className="questions"
       actions={button}
     >
-      <Accordion cols={2}>
+      <AccordionGroup cols={2}>
         {questionItems.map((item, index) => (
-          <AccordionItem
+          <Accordion
             key={index}
             isOpen={index === 0}
             titleId={`question-${index}`}
             detailsName="questions"
             {...item}
-          ></AccordionItem>
+          ></Accordion>
         ))}
-      </Accordion>
+      </AccordionGroup>
     </Section>
   );
 };

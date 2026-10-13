@@ -1,20 +1,24 @@
 import "./Accordion.scss";
-import classNames from "classnames";
 
 const Accordion = (props) => {
-  const { cols = 1, children, isOrderedList = true } = props;
-
-  const ListTag = isOrderedList ? "ol" : "ul";
-  const accordionCols = cols > 1 ? `accordion--${cols}` : "";
-  const hasCounter = isOrderedList ? "accordion--has-counter" : "";
+  const { title, description, isOpen = false, titleId, detailsName } = props;
   return (
-    <ListTag className={classNames("accordion", accordionCols, hasCounter)}>
-      {children.map((itemContent, index) => (
-        <li className="accordion__item" key={index}>
-          {itemContent}
-        </li>
-      ))}
-    </ListTag>
+    <div className="accordion">
+      <details className="accordion__details" open={isOpen} name={detailsName}>
+        <summary className="accordion__summary">
+          <h3 className="h5 accordion__title">
+            <span role="term" aria-details={titleId}>
+              {title}
+            </span>
+          </h3>
+        </summary>
+      </details>
+      <div className="accordion__content" id={titleId} role="definition">
+        <div className="accordion__content-inner">
+          <div className="accordion__content-body">{description}</div>
+        </div>
+      </div>
+    </div>
   );
 };
 
