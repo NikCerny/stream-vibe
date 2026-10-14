@@ -15,7 +15,9 @@ const Accordion = (props) => {
       </details>
       <div className="accordion__content" id={titleId} role="definition">
         <div className="accordion__content-inner">
-          <div className="accordion__content-body">{description}</div>
+          <div className="accordion__content-body">
+            <p>{description}</p>
+          </div>
         </div>
       </div>
     </div>

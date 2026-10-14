@@ -7,7 +7,7 @@ const Button = (props) => {
     label,
     isLabelHidden = false,
     type = "button",
-    mode, // undefined || transparent || black-10
+    mode, // default || transparent || black-10 || black-08
     className,
     iconName,
     hasFillIcon = false,

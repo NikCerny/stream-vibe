@@ -5,7 +5,7 @@
   margin-block: auto;
   &__summary {
     color: var(--color-white);
-    transition-duration: var(--transition-duration);
+
     list-style: none;
     &::-webkit-details-marker {
       display: none;
@@ -20,7 +20,7 @@
     position: relative;
     padding-right: 50px;
     color: inherit;
-
+    transition-duration: var(--transition-duration);
     &::after,
     &::before {
       @include abs-y;
