@@ -1,0 +1,10 @@
+.tabs {
+  &__content {
+    &:not(.is-active) {
+      display: none;
+    }
+    &:focus-visible {
+      outline-offset: -1rem;
+    }
+  }
+}

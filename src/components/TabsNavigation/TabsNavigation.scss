@@ -1,0 +1,36 @@
+.tabs-navigation {
+  display: flex;
+  padding: fluid-desktop-laptop(10, 8);
+  align-items: center;
+  border-radius: var(--border-radius-m);
+  border: var(--border);
+  background-color: var(--color-black-06);
+  @include laptop {
+    border-radius: var(--border-radius-s);
+  }
+
+  &__button {
+    cursor: pointer;
+    display: flex;
+    padding: fluid-desktop-laptop(14, 12) fluid-desktop-laptop(24, 20);
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition-duration: var(--transition-duration);
+    border-radius: var(--border-radius-m);
+    @include laptop {
+        border-radius: var(--border-radius-xs);
+    }
+
+    &.is-active {
+      color: var(--color-white);
+      background-color: var(--color-black-12);
+      pointer-events: none;
+    }
+
+    @include hover {
+      background-color: var(--color-red-60);
+      color: var(--color-white);
+    }
+  }
+}
