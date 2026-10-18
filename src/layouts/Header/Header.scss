@@ -10,20 +10,15 @@
     position: fixed;
   }
 
-  @keyframes scrolling-header {
-    to {
-      background-color: var(--color-black-10);
-      border-color: var(--color-red-45);
-      padding-block: 10px;
-    }
-  }
+  transition:
+    background-color var(--transition-duration),
+    border-color var(--transition-duration),
+    padding-block var(--transition-duration);
 
-  @supports (animation-timeline: scroll()) and (animation-range: 1px 2px) {
-    animation-name: scrolling-header;
-    animation-duration: 1ms;
-    animation-fill-mode: both;
-    animation-timeline: scroll();
-    animation-range: 50px 200px;
+  &.is-scrolled {
+    background-color: var(--color-black-10);
+    border-color: var(--color-red-45);
+    padding-block: 10px;
   }
 
   &__inner {
