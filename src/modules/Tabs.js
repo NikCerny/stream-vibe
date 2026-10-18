@@ -1,8 +1,9 @@
 import getParams from "@/utils/getParams";
+import BaseComponent from "./generic/BaseComponent";
 
 const rootSelector = "[data-js-tabs]";
 
-class Tabs {
+class Tabs extends BaseComponent {
   selectors = {
     root: rootSelector,
     button: "[data-js-tabs-button]",
@@ -20,6 +21,7 @@ class Tabs {
   };
 
   constructor(rootElement) {
+    super();
     this.rootElement = rootElement;
     this.params = getParams(rootElement, this.selectors.root);
 
@@ -34,11 +36,11 @@ class Tabs {
       this.selectors.button,
     );
 
-    this.state = {
+    this.state = this.getProxyState({
       activeTabIndex: [...this.buttonElements].findIndex((buttonElem) =>
         buttonElem.classList.contains(this.stateClasses.isActive),
       ),
-    };
+    });
 
     this.limitTabsIndex = this.buttonElements.length - 1;
     this.bindEvents();
@@ -53,7 +55,6 @@ class Tabs {
 
   onButtonClick(buttonIndex) {
     this.state.activeTabIndex = buttonIndex;
-    this.updateUI();
   }
 
   updateUI() {
@@ -86,7 +87,6 @@ class Tabs {
 
     if (action) {
       action();
-      this.updateUI();
     }
   };
 

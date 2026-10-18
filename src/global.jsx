@@ -3,6 +3,7 @@ import { Head } from "minista/head";
 import Header from "@/layouts/Header";
 import Content from "@/layouts/Content";
 import Footer from "@/layouts/Footer";
+import Banner from "@/sections/Banner";
 
 export default function (props) {
   const { children, title, url, isPositionFixed } = props;
@@ -32,7 +33,10 @@ export default function (props) {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
       <Header url={url} isHeaderPositionFixed={isPositionFixed}></Header>
-      <Content>{children}</Content>
+      <Content>
+        {children}
+        <Banner></Banner>
+      </Content>
       <Footer></Footer>
     </>
   );

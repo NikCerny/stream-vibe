@@ -1,0 +1,46 @@
+.banner {
+  padding-bottom: fluid(150, 80);
+
+  &__inner {
+    border: var(--border);
+    border-radius: var(--border-radius-l);
+    padding: fluid(100, 50) fluid(80, 30);
+    display: flex;
+    align-items: center;
+    background:
+      linear-gradient(
+        90deg,
+        #0f0f0f 2.42%,
+        rgba(20, 15, 15, 0.97) 25.46%,
+        rgba(34, 14, 14, 0.91) 46.72%,
+        rgba(229, 0, 0, 0) 168.98%
+      ),
+      url("../../assets/images/banner-bg.png") center / cover no-repeat;
+
+    @include mobile-above {
+      justify-content: space-between;
+      align-items: center;
+      column-gap: 20px;
+    }
+    @include mobile {
+      flex-direction: column;
+      row-gap: 50px;
+      background: url("../../assets/images/banner-bg-mobile.png") center /
+        contain no-repeat;
+    }
+  }
+
+  &__info {
+    @include mobile {
+      @include flex-center;
+      flex-direction: column;
+      row-gap: 10px;
+      text-align: center;
+    }
+  }
+  &__button {
+    @include hover {
+      background-color: var(--color-red-60);
+    }
+  }
+}

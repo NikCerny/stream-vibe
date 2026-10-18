@@ -19,7 +19,7 @@
     transition-duration: var(--transition-duration);
     border-radius: var(--border-radius-m);
     @include laptop {
-        border-radius: var(--border-radius-xs);
+      border-radius: var(--border-radius-xs);
     }
 
     &.is-active {
