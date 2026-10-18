@@ -2,7 +2,7 @@
   &--has-counter {
     counter-reset: custom-counter;
     list-style: none;
-    &__item {
+    .accordion-group__item {
       counter-increment: custom-counter;
       display: flex;
       column-gap: fluid-desktop-laptop(20, 16);
