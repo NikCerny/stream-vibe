@@ -19,6 +19,12 @@ const MoviesBanner = (props) => {
         "A fiery young man clashes with an unflinching forest officer in a south Indian village where spirituality, fate and folklore rule the lands.",
       bannerSrc: "/src/assets/images/moviesBanner/kantara.jpg",
     },
+    {
+      title: "Stranger Things",
+      description:
+        "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.",
+      bannerSrc: "/src/assets/images/moviesBanner/stranger-things.jpg",
+    },
   ];
   const sliderParams = {
     loop: true,
