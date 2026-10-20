@@ -6,7 +6,7 @@ const MovieBannerCard = (props) => {
   const { title, description, bannerSrc } = props;
   return (
     <div
-      className="movie-banner-card__slide"
+      className="movie-banner-card"
       style={{ "--movieBannerImage": `url("${bannerSrc}")` }}
     >
       <div className="movie-banner-card__content">

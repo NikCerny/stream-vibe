@@ -39,7 +39,7 @@ const MoviesBanner = (props) => {
       <h1 className="visually-hidden" id={titleId}>
         Movies and Shows
       </h1>
-      <div className="movie-banner-card">
+      <div className="movies-banner__inner">
         <Slider
           sliderParams={sliderParams}
           navigationTargetElementId={sliderNavigationId}
@@ -52,7 +52,7 @@ const MoviesBanner = (props) => {
 
         <SliderNavigation
           id={sliderNavigationId}
-          className="movie-banner-card__navigation hidden-mobile"
+          className="movies-banner__navigation hidden-mobile"
         />
       </div>
     </section>

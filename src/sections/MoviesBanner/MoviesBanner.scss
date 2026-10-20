@@ -1,3 +1,14 @@
 .movies-banner {
   padding-bottom: fluid-desktop-laptop(180, 80);
+  
+  &__inner {
+    position: relative;
+  }
+
+  &__navigation {
+    position: absolute;
+    inset-inline: fluid(50, 24);
+    bottom: fluid-desktop-laptop(20, 16);
+    z-index: 2;
+  }
 }
