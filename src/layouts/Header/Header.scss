@@ -10,6 +10,10 @@
     position: fixed;
   }
 
+  &:not(.is-fixed){
+    padding-bottom: fluid-desktop-laptop(50, 40);
+  }
+
   transition:
     background-color var(--transition-duration),
     border-color var(--transition-duration),

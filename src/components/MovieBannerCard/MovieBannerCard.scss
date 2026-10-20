@@ -1,0 +1,92 @@
+.movie-banner-card {
+  border: var(--border);
+  border-radius: var(--border-radius-l);
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  row-gap: fluid-desktop-laptop(50, 40);
+  --movieBannerPaddingInnerX: #{fluid(50, 24)};
+
+  height: fluid-desktop-laptop(835, 709);
+
+  @include laptop {
+    height: fluid-laptop-mobile(709, 468);
+  }
+
+  @include mobile {
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  .slider__swiper {
+    height: 100%;
+  }
+
+  &__slide {
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    background:
+      linear-gradient(0deg, #141414 0%, rgba(20, 20, 20, 0) 100%),
+      var(--movieBannerImage) center / cover no-repeat;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-inline: var(--movieBannerPaddingInnerX);
+    text-align: center;
+
+    @include mobile {
+      padding-bottom: 16px;
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: var(--movieBannerPaddingInnerX);
+    padding-bottom: fluid-desktop-laptop(20, 16);
+  }
+
+  &__title {
+    @include mobile {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__description {
+    max-width: 1194px;
+    margin-bottom: fluid-desktop-laptop(30, 24);
+  }
+
+  &__button {
+    padding-block: 14px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 20px;
+    @include mobile {
+      flex-direction: column;
+      align-self: stretch;
+    }
+  }
+
+  &__buttons-extra {
+    display: flex;
+    column-gap: fluid-desktop-laptop(10, 8);
+
+    .button:has(.button__icon:only-child) .button__icon.icon {
+      --iconWrapper: #{fluid-desktop-laptop(56, 48)};
+      --iconSize: #{fluid-desktop-laptop(28, 24)};
+    }
+
+    @include mobile {
+      align-self: center;
+    }
+  }
+}
