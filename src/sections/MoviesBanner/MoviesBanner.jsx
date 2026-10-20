@@ -25,6 +25,7 @@ const MoviesBanner = (props) => {
     slidesPerView: 1,
     slidesPerGroup: 1,
     spaceBetween: 0,
+    breakpoints: { 768: { allowTouchMove: false } },
   };
 
   return (

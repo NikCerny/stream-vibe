@@ -1,6 +1,7 @@
 .slider-navigation {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   &--tile {
     column-gap: fluid-desktop-laptop(16, 12);
