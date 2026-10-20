@@ -1,5 +1,6 @@
 import "./MovieBannerCard.scss";
 import Button from "@/components/Button";
+import { Image } from "minista/assets";
 
 const MovieBannerCard = (props) => {
   const { title, description, bannerSrc } = props;
@@ -15,7 +16,7 @@ const MovieBannerCard = (props) => {
         </div>
         <div className="movie-banner-card__actions">
           <Button
-            className="movie-banner-card__button"
+            className="movie-banner-card__play-button"
             iconName="play"
             hasFillIcon
             label="Play Now"

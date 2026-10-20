@@ -1,19 +1,16 @@
 .movie-banner-card {
   border: var(--border);
   border-radius: var(--border-radius-l);
+  overflow: hidden;
   display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
-  row-gap: fluid-desktop-laptop(50, 40);
+  grid-template-rows: minmax(0, 1fr);
   --movieBannerPaddingInnerX: #{fluid(50, 24)};
+  position: relative;
 
   height: fluid-desktop-laptop(835, 709);
 
   @include laptop {
     height: fluid-laptop-mobile(709, 468);
-  }
-
-  @include mobile {
-    grid-template-rows: minmax(0, 1fr);
   }
 
   .slider__swiper {
@@ -39,13 +36,17 @@
     width: 100%;
     padding-inline: var(--movieBannerPaddingInnerX);
     text-align: center;
-
+    padding-bottom: fluid-desktop-laptop(126, 104);
     @include mobile {
       padding-bottom: 16px;
     }
   }
 
   &__navigation {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 2;
     display: flex;
     justify-content: space-between;
     padding-inline: var(--movieBannerPaddingInnerX);
