@@ -2,7 +2,6 @@
   padding-bottom: fluid(180, 80);
   &__list {
     @include mobile-above {
-      position: relative;
       padding: fluid-desktop-laptop(50, 40);
       border: var(--border);
       border-radius: var(--border-radius-l);
@@ -10,22 +9,32 @@
         margin-bottom: fluid-desktop-laptop(150, 120);
       }
 
-      &::before {
-        content: "Movies";
-        color: var(--color-white);
-        font-weight: 600;
-        font-size: fluid-desktop-laptop(20, 16);
-        position: absolute;
-        top: 0;
-        left: fluid-desktop-laptop(50, 40);
-        translate: 0 -50%;
-        padding: 10px 24px;
-        border-radius: var(--border-radius-s);
-        background: var(--color-red-45);
-        @include laptop {
-          border-radius: var(--border-radius-xs);
-          padding: 8px 20px;
+      &--movies-badge,
+      &--shows-badge {
+        position: relative;
+        &::before {
+          z-index: 1;
+          color: var(--color-white);
+          font-weight: 600;
+          font-size: fluid-desktop-laptop(20, 16);
+          position: absolute;
+          top: 0;
+          left: fluid-desktop-laptop(50, 40);
+          translate: 0 -50%;
+          padding: 10px 24px;
+          border-radius: var(--border-radius-s);
+          background: var(--color-red-45);
+          @include laptop {
+            border-radius: var(--border-radius-xs);
+            padding: 8px 20px;
+          }
         }
+      }
+      &--movies-badge::before {
+        content: "Movies";
+      }
+      &--shows-badge::before {
+        content: "Shows";
       }
     }
 

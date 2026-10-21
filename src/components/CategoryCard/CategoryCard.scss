@@ -2,6 +2,7 @@
   --categoryCardImagesGradientOpacity: 1;
   --arrowColor: white;
   --newReleaseColor: var(--color-gray-75);
+  font-size: fluid-desktop-laptop(16, 12);
 
   display: flex;
   flex-direction: column;
@@ -80,7 +81,7 @@
   }
 
   &__title {
-    font-size: inherit;
+    font-size: fluid-desktop-laptop(18, 14);
     font-weight: 600;
   }
 
@@ -110,8 +111,10 @@
 
   &__duration,
   &__views,
-  &__new-release {
+  &__new-release,
+  &__season {
     font-weight: 500;
+    gap: 4px;
     padding: 6px 10px 6px 6px;
     display: flex;
     border: var(--border);
@@ -120,6 +123,34 @@
     @include laptop {
       padding: 4px 8px 4px 4px;
     }
+    &::before {
+      content: "";
+      --size: 24px;
+      @include square(var(--size));
+      @include laptop {
+        --size: 20px;
+      }
+    }
+  }
+
+  &__duration {
+    &::before {
+      background: url("../../assets/icons/watches.svg") center / contain
+        no-repeat;
+    }
+  }
+
+  &__views {
+    &::before {
+      background: url("../../assets/icons/eye.svg") center / contain no-repeat;
+    }
+  }
+
+  &__season {
+    &::before {
+      background: url("../../assets/icons/season.svg") center / contain
+        no-repeat;
+    }
   }
 
   &__new-release {
@@ -127,32 +158,7 @@
     justify-content: center;
     text-wrap: nowrap;
     &--accent {
-      color: var(--newReleaseColor);
-    }
-  }
-
-  &__duration {
-    gap: 2px;
-    &::before {
-      content: "";
-      display: block;
-      width: fluid-desktop-laptop(20, 17);
-      height: fluid-desktop-laptop(20, 17);
-      align-self: center;
-      background: url("../../assets/icons/watches.svg") center / contain
-        no-repeat;
-    }
-  }
-
-  &__views {
-    gap: 4px;
-    &::before {
-      content: "";
-      display: block;
-      width: fluid-desktop-laptop(20, 18);
-      height: fluid-desktop-laptop(17, 14);
-      align-self: center;
-      background: url("../../assets/icons/eye.svg") center / contain no-repeat;
+      color: currentColor;
     }
   }
 
@@ -173,7 +179,9 @@
 
   &.is-trending,
   &.is-new-release,
-  &.is-must-watch {
+  &.is-must-watch,
+  &.is-new-release-show,
+  &.is-trending-show {
     row-gap: fluid(20, 12);
     padding: fluid(20, 12);
 
@@ -192,12 +200,11 @@
     }
   }
 
-  &.is-must-watch {
+  &.is-must-watch,
+  &.is-new-release-show,
+  &.is-trending-show {
     .category-card__image {
       height: fluid(404, 235);
-    }
-    .category-card__duration {
-      font-size: fluid-desktop-laptop(14, 12);
     }
   }
 

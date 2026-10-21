@@ -11,16 +11,19 @@ const CategoryCard = (props) => {
     isPopular = false,
     isTrending = false,
     isNewRelease = false,
+    isNewReleaseShow = false,
     isMustWatch = false,
     views,
     duration,
     releaseDate,
-    rating
+    rating,
+    seasonCount
   } = props;
 
   const isPopularClass = isPopular ? "is-popular" : "";
   const isTrendingClass = isTrending ? "is-trending" : "";
   const isNewReleaseClass = isNewRelease ? "is-new-release" : "";
+  const isNewReleaseShowClass = isNewReleaseShow ? "is-new-release-show" : "";
   const isMustWatchClass = isMustWatch ? "is-must-watch" : "";
   const viewsFormatted = `${Number(views) / 1000}K`;
   const durationInMinutes = Number(duration);
@@ -73,11 +76,21 @@ const CategoryCard = (props) => {
     </div>
   );
 
+  const newReleaseShowBlock = (
+    <div className="category-card__extra-info">
+      <div className="category-card__duration">{durationFormatted}</div>
+      <div className="category-card__season">{seasonCount} Season</div>
+    </div>
+  );
+
   const mustWatchBlock = (
     <div className="category-card__extra-info">
       <div className="category-card__duration">{durationFormatted}</div>
       <div className="category-card__rating">
-        <RatingStars starCount={rating} extraText={viewsFormatted}></RatingStars>
+        <RatingStars
+          starCount={rating}
+          extraText={viewsFormatted}
+        ></RatingStars>
       </div>
     </div>
   );
@@ -90,6 +103,7 @@ const CategoryCard = (props) => {
         isTrendingClass,
         isNewReleaseClass,
         isMustWatchClass,
+        isNewReleaseShowClass,
       )}
       href="/movies"
     >
@@ -110,6 +124,7 @@ const CategoryCard = (props) => {
         {isPopular && popularBlock}
         {isNewRelease && newReleaseBlock}
         {isMustWatch && mustWatchBlock}
+        {isNewReleaseShow && newReleaseShowBlock}
       </div>
     </a>
   );
