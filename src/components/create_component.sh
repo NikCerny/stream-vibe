@@ -25,7 +25,7 @@ import './$NAME.scss'
 
 const $NAME = (props) => {
   return (
-      <$LOWER_NAME className="$LOWER_NAME">{props.children}</$LOWER_NAME>
+      <div className="$LOWER_NAME">plug</div>
   )
 }
 

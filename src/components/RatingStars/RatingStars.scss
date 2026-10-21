@@ -1,0 +1,23 @@
+.rating-stars {
+  @include flex-center;
+  column-gap: 4px;
+
+  &__extra-text {
+    font-size: fluid-desktop-laptop(14, 12);
+  }
+
+  &__star {
+    --size: 18px;
+    @include square(var(--size));
+    background: url("../../assets/icons/grey-star.svg") center/contain no-repeat;
+    &.is-active {
+      background-image: url("../../assets/icons/red-star.svg");
+    }
+    &.is-half-active {
+      background-image: url("../../assets/icons/half-red-star.svg");
+    }
+    @include laptop {
+      --size: 14px;
+    }
+  }
+}
