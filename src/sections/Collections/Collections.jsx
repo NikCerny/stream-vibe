@@ -8,6 +8,12 @@ import showItems from "./showItems";
 const Collections = (props) => {
   const titleId = "collections-title";
 
+  const sliderTitleIdFormatted = (title, prefix) => {
+    return `${title.replaceAll(" ", "-")}-${prefix}-slider-navigation`
+      .replace(/-{2,}/g, "-")
+      .toLowerCase();
+  };
+
   return (
     <section aria-labelledby={titleId} className="collections container">
       <h2 className="visually-hidden" id={titleId}>
@@ -21,12 +27,15 @@ const Collections = (props) => {
                 <h3 className="collections__title">{movieItem.title}</h3>
                 <SliderNavigation
                   mode="tile"
-                  id={`${movieItem.title.replaceAll(" ", "-")}-movies-slider-navigation`}
+                  id={sliderTitleIdFormatted(movieItem.title, "movie")}
                 />
               </header>
               <div className="collections__body">
                 <Slider
-                  navigationTargetElementId={`${movieItem.title.replaceAll(" ", "-")}-movies-slider-navigation`}
+                  navigationTargetElementId={sliderTitleIdFormatted(
+                    movieItem.title,
+                    "movie",
+                  )}
                   isBeyondTheViewportOnMobileS
                   sliderParams={movieItem?.sliderParams}
                 >
@@ -54,12 +63,15 @@ const Collections = (props) => {
                 <h3 className="collections__title">{showItem.title}</h3>
                 <SliderNavigation
                   mode="tile"
-                  id={`${showItem.title.replaceAll(" ", "-")}-shows-slider-navigation`}
+                  id={sliderTitleIdFormatted(showItem.title, "show")}
                 />
               </header>
               <div className="collections__body">
                 <Slider
-                  navigationTargetElementId={`${showItem.title.replaceAll(" ", "-")}-shows-slider-navigation`}
+                  navigationTargetElementId={sliderTitleIdFormatted(
+                    showItem.title,
+                    "show",
+                  )}
                   isBeyondTheViewportOnMobileS
                   sliderParams={showItem?.sliderParams}
                 >
