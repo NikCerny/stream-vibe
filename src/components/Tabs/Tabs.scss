@@ -1,7 +1,16 @@
 .tabs {
+  --tabsDisplay: none;
+
+  &--enable-only-on-mobile {
+    @include mobile-above {
+      --tabsDisplay: block;
+      --tabsNavigationDisplay: none;
+    }
+  }
+
   &__content {
     &:not(.is-active) {
-      display: none;
+      display: var(--tabsDisplay);
     }
     &:focus-visible {
       outline-offset: -1rem;

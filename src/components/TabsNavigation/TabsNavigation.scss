@@ -1,5 +1,5 @@
 .tabs-navigation {
-  display: flex;
+  display: var(--tabsNavigationDisplay, flex);
   padding: fluid-desktop-laptop(10, 8);
   align-items: center;
   border-radius: var(--border-radius-m);
