@@ -15,6 +15,18 @@
     }
   }
 
+  &__arrow-button.button:has(.button__icon:only-child) {
+    .button__icon.icon {
+      --iconWrapper: 56px;
+      --iconSize: 28px;
+
+      @include laptop {
+        --iconWrapper: 44px;
+        --iconSize: 24px;
+      }
+    }
+  }
+
   &__pagination {
     display: flex;
     column-gap: 3px;
