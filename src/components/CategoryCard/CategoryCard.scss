@@ -81,8 +81,20 @@
   }
 
   &__title {
+    display: grid;
+    row-gap: fluid-desktop-laptop(4, 2);
     font-size: fluid-desktop-laptop(18, 14);
     font-weight: 600;
+
+    &:has(.badge) {
+      .category-card__title--larger {
+        font-size: fluid-desktop-laptop(20, 16);
+      }
+    }
+  }
+
+  &__badge {
+    justify-self: start;
   }
 
   &__icon {
@@ -93,14 +105,6 @@
     }
   }
 
-  &__title-badge {
-    display: flex;
-    flex-direction: column;
-    row-gap: fluid-desktop-laptop(4, 2);
-    .category-card__title {
-      font-size: fluid(20, 16);
-    }
-  }
 
   &__extra-info {
     display: flex;
@@ -162,20 +166,6 @@
     }
   }
 
-  &__badge {
-    padding-inline: fluid-desktop-laptop(10, 8);
-    padding-block: 5px;
-    border-radius: var(--border-radius-xxs);
-    background: var(--color-red-45);
-    color: white;
-    font-size: fluid-desktop-laptop(16, 12);
-    font-weight: 600;
-    align-self: flex-start;
-
-    @include mobile {
-      border-radius: var(--border-radius-xxxs);
-    }
-  }
 
   &.is-trending,
   &.is-new-release,

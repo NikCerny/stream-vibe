@@ -3,12 +3,12 @@ import { Image } from "minista/assets";
 import Icon from "@/components/Icon";
 import classNames from "classnames";
 import RatingStars from "@/components/RatingStars";
+import Badge from "@/components/Badge";
 
 const CategoryCard = (props) => {
   const {
     title,
     images = [],
-    isPopular = false,
     isTrending = false,
     isTrendingShow = false,
     isNewRelease = false,
@@ -18,10 +18,11 @@ const CategoryCard = (props) => {
     duration,
     releaseDate,
     rating,
-    seasonCount
+    seasonCount,
+    badgeContent,
   } = props;
 
-  const isPopularClass = isPopular ? "is-popular" : "";
+  
   const isTrendingClass = isTrending ? "is-trending" : "";
   const isTrendingShowClass = isTrendingShow ? "is-trending-show" : "";
   const isNewReleaseClass = isNewRelease ? "is-new-release" : "";
@@ -47,7 +48,15 @@ const CategoryCard = (props) => {
 
   const defaultBlock = (
     <>
-      <h3 className="category-card__title">{title}</h3>
+      <h3 className="category-card__title">
+        {badgeContent && (
+          <Badge className="category-card__badge" mode="accent" isLarger>
+            {badgeContent}
+          </Badge>
+        )}
+        <span className="category-card__title--larger">{title}</span>
+      </h3>
+
       <Icon className="category-card__icon" name="arrow-right" />
     </>
   );
@@ -59,15 +68,7 @@ const CategoryCard = (props) => {
     </div>
   );
 
-  const popularBlock = (
-    <>
-      <div className="category-card__title-badge">
-        <div className="category-card__badge">Top 10 In</div>
-        <h3 className="category-card__title h6">{title}</h3>
-      </div>
-      <Icon className="category-card__icon" name="arrow-right" />
-    </>
-  );
+
 
   const newReleaseBlock = (
     <div className="category-card__new-release">
@@ -101,7 +102,6 @@ const CategoryCard = (props) => {
     <a
       className={classNames(
         "category-card",
-        isPopularClass,
         isTrendingClass,
         isTrendingShowClass,
         isNewReleaseClass,
@@ -122,9 +122,8 @@ const CategoryCard = (props) => {
         ))}
       </div>
       <div className="category-card__body">
-        {title && !isPopular && defaultBlock}
+        {title && defaultBlock}
         {isTrending && trendingBlock}
-        {isPopular && popularBlock}
         {isNewRelease && newReleaseBlock}
         {isMustWatch && mustWatchBlock}
         {isNewReleaseShow && newReleaseShowBlock}

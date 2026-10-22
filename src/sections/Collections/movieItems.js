@@ -1,158 +1,14 @@
-import { sliderParamsOneHalfFour, sliderParamsTwoFive } from "./sliderSpecificParams";
+import {
+  sliderParamsOneHalfFour,
+  sliderParamsTwoFive,
+} from "./sliderSpecificParams";
+import categoryItems from "@/sections/Categories/categoryItems";
 
 const movieItems = [
   {
     title: "Our genres",
     sliderParams: sliderParamsTwoFive,
-    items: [
-      {
-        title: "Action",
-        images: [
-          "/src/assets/images/categories/action/1.jpg",
-          "/src/assets/images/categories/action/2.jpg",
-          "/src/assets/images/categories/action/3.jpg",
-          "/src/assets/images/categories/action/4.jpg",
-        ],
-      },
-      {
-        title: "Adventure",
-        images: [
-          "/src/assets/images/categories/adventure/1.jpg",
-          "/src/assets/images/categories/adventure/2.jpg",
-          "/src/assets/images/categories/adventure/3.jpg",
-          "/src/assets/images/categories/adventure/4.jpg",
-        ],
-      },
-      {
-        title: "Comedy",
-        images: [
-          "/src/assets/images/categories/comedy/1.jpg",
-          "/src/assets/images/categories/comedy/2.jpg",
-          "/src/assets/images/categories/comedy/3.jpg",
-          "/src/assets/images/categories/comedy/4.jpg",
-        ],
-      },
-      {
-        title: "Drama",
-        images: [
-          "/src/assets/images/categories/drama/1.jpg",
-          "/src/assets/images/categories/drama/2.jpg",
-          "/src/assets/images/categories/drama/3.jpg",
-          "/src/assets/images/categories/drama/4.jpg",
-        ],
-      },
-      {
-        title: "Horror",
-        images: [
-          "/src/assets/images/categories/horror/1.jpg",
-          "/src/assets/images/categories/horror/2.jpg",
-          "/src/assets/images/categories/horror/3.jpg",
-          "/src/assets/images/categories/horror/4.jpg",
-        ],
-      },
-      {
-        title: "NextExample1",
-        images: [
-          "/src/assets/images/categories/drama/1.jpg",
-          "/src/assets/images/categories/drama/2.jpg",
-          "/src/assets/images/categories/drama/3.jpg",
-          "/src/assets/images/categories/drama/4.jpg",
-        ],
-      },
-      {
-        title: "NextExample2",
-        images: [
-          "/src/assets/images/categories/drama/1.jpg",
-          "/src/assets/images/categories/drama/2.jpg",
-          "/src/assets/images/categories/drama/3.jpg",
-          "/src/assets/images/categories/drama/4.jpg",
-        ],
-      },
-
-      {
-        title: "NextExample3",
-        images: [
-          "/src/assets/images/categories/drama/1.jpg",
-          "/src/assets/images/categories/drama/2.jpg",
-          "/src/assets/images/categories/drama/3.jpg",
-          "/src/assets/images/categories/drama/4.jpg",
-        ],
-      },
-
-      {
-        title: "NextExample4",
-        images: [
-          "/src/assets/images/categories/drama/1.jpg",
-          "/src/assets/images/categories/drama/2.jpg",
-          "/src/assets/images/categories/drama/3.jpg",
-          "/src/assets/images/categories/drama/4.jpg",
-        ],
-      },
-
-      {
-        title: "NextExample5",
-        images: [
-          "/src/assets/images/categories/drama/1.jpg",
-          "/src/assets/images/categories/drama/2.jpg",
-          "/src/assets/images/categories/drama/3.jpg",
-          "/src/assets/images/categories/drama/4.jpg",
-        ],
-      },
-      {
-        title: "NextExample6",
-        images: [
-          "/src/assets/images/categories/drama/1.jpg",
-          "/src/assets/images/categories/drama/2.jpg",
-          "/src/assets/images/categories/drama/3.jpg",
-          "/src/assets/images/categories/drama/4.jpg",
-        ],
-      },
-      {
-        title: "NextExample7",
-        images: [
-          "/src/assets/images/categories/drama/1.jpg",
-          "/src/assets/images/categories/drama/2.jpg",
-          "/src/assets/images/categories/drama/3.jpg",
-          "/src/assets/images/categories/drama/4.jpg",
-        ],
-      },
-      {
-        title: "NextExample8",
-        images: [
-          "/src/assets/images/categories/drama/1.jpg",
-          "/src/assets/images/categories/drama/2.jpg",
-          "/src/assets/images/categories/drama/3.jpg",
-          "/src/assets/images/categories/drama/4.jpg",
-        ],
-      },
-      {
-        title: "NextExample8",
-        images: [
-          "/src/assets/images/categories/drama/1.jpg",
-          "/src/assets/images/categories/drama/2.jpg",
-          "/src/assets/images/categories/drama/3.jpg",
-          "/src/assets/images/categories/drama/4.jpg",
-        ],
-      },
-      {
-        title: "NextExample8",
-        images: [
-          "/src/assets/images/categories/drama/1.jpg",
-          "/src/assets/images/categories/drama/2.jpg",
-          "/src/assets/images/categories/drama/3.jpg",
-          "/src/assets/images/categories/drama/4.jpg",
-        ],
-      },
-      {
-        title: "NextExample8",
-        images: [
-          "/src/assets/images/categories/drama/1.jpg",
-          "/src/assets/images/categories/drama/2.jpg",
-          "/src/assets/images/categories/drama/3.jpg",
-          "/src/assets/images/categories/drama/4.jpg",
-        ],
-      },
-    ],
+    items: categoryItems,
   },
   {
     title: "Popular Top 10 In Genres",
@@ -161,6 +17,7 @@ const movieItems = [
     items: [
       {
         title: "Action",
+        badgeContent: "Top 10 In",
         images: [
           "/src/assets/images/categories/popular-top-10/10.png",
           "/src/assets/images/categories/popular-top-10/2.png",
@@ -170,6 +27,7 @@ const movieItems = [
       },
       {
         title: "Adventure",
+        badgeContent: "Top 10 In",
         images: [
           "/src/assets/images/categories/adventure/1.jpg",
           "/src/assets/images/categories/adventure/2.jpg",
@@ -179,6 +37,7 @@ const movieItems = [
       },
       {
         title: "Comedy",
+        badgeContent: "Top 10 In",
         images: [
           "/src/assets/images/categories/comedy/1.jpg",
           "/src/assets/images/categories/comedy/2.jpg",
@@ -188,6 +47,7 @@ const movieItems = [
       },
       {
         title: "Drama",
+        badgeContent: "Top 10 In",
         images: [
           "/src/assets/images/categories/drama/1.jpg",
           "/src/assets/images/categories/drama/2.jpg",
@@ -197,6 +57,7 @@ const movieItems = [
       },
       {
         title: "Horror",
+        badgeContent: "Top 10 In",
         images: [
           "/src/assets/images/categories/horror/1.jpg",
           "/src/assets/images/categories/horror/2.jpg",
@@ -205,7 +66,8 @@ const movieItems = [
         ],
       },
       {
-        title: "Action",
+        title: "Action 2",
+        badgeContent: "Top 10 In",
         images: [
           "/src/assets/images/categories/popular-top-10/10.png",
           "/src/assets/images/categories/popular-top-10/2.png",
@@ -214,7 +76,8 @@ const movieItems = [
         ],
       },
       {
-        title: "Adventure",
+        title: "Adventure 2",
+        badgeContent: "Top 10 In",
         images: [
           "/src/assets/images/categories/adventure/1.jpg",
           "/src/assets/images/categories/adventure/2.jpg",
@@ -223,7 +86,8 @@ const movieItems = [
         ],
       },
       {
-        title: "Comedy",
+        title: "Comedy 2",
+        badgeContent: "Top 10 In",
         images: [
           "/src/assets/images/categories/comedy/1.jpg",
           "/src/assets/images/categories/comedy/2.jpg",
@@ -232,7 +96,8 @@ const movieItems = [
         ],
       },
       {
-        title: "Drama",
+        title: "Drama 3",
+        badgeContent: "Top 10 In",
         images: [
           "/src/assets/images/categories/drama/1.jpg",
           "/src/assets/images/categories/drama/2.jpg",
@@ -241,7 +106,8 @@ const movieItems = [
         ],
       },
       {
-        title: "Action",
+        title: "Action 3",
+        badgeContent: "Top 10 In",
         images: [
           "/src/assets/images/categories/popular-top-10/10.png",
           "/src/assets/images/categories/popular-top-10/2.png",
@@ -250,7 +116,8 @@ const movieItems = [
         ],
       },
       {
-        title: "Adventure",
+        title: "Adventure 3",
+        badgeContent: "Top 10 In",
         images: [
           "/src/assets/images/categories/adventure/1.jpg",
           "/src/assets/images/categories/adventure/2.jpg",
@@ -259,7 +126,8 @@ const movieItems = [
         ],
       },
       {
-        title: "Comedy",
+        title: "Comedy 3",
+        badgeContent: "Top 10 In",
         images: [
           "/src/assets/images/categories/comedy/1.jpg",
           "/src/assets/images/categories/comedy/2.jpg",
@@ -268,7 +136,8 @@ const movieItems = [
         ],
       },
       {
-        title: "Drama",
+        title: "Drama 4",
+        badgeContent: "Top 10 In",
         images: [
           "/src/assets/images/categories/drama/1.jpg",
           "/src/assets/images/categories/drama/2.jpg",
@@ -277,7 +146,8 @@ const movieItems = [
         ],
       },
       {
-        title: "Action",
+        title: "Action 4",
+        badgeContent: "Top 10 In",
         images: [
           "/src/assets/images/categories/popular-top-10/10.png",
           "/src/assets/images/categories/popular-top-10/2.png",
@@ -286,7 +156,8 @@ const movieItems = [
         ],
       },
       {
-        title: "Adventure",
+        title: "Adventure 4",
+        badgeContent: "Top 10 In",
         images: [
           "/src/assets/images/categories/adventure/1.jpg",
           "/src/assets/images/categories/adventure/2.jpg",
@@ -295,7 +166,8 @@ const movieItems = [
         ],
       },
       {
-        title: "Comedy",
+        title: "Comedy 4",
+        badgeContent: "Top 10 In",
         images: [
           "/src/assets/images/categories/comedy/1.jpg",
           "/src/assets/images/categories/comedy/2.jpg",
