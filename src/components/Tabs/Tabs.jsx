@@ -25,14 +25,11 @@ const Tabs = (props) => {
     titleId,
     isEnableOnlyOnMobile = false,
     className,
-    navigationButtonInfo = [],
   } = props;
 
   const isEnableOnlyOnMobileClass = isEnableOnlyOnMobile
     ? "tabs--enable-only-on-mobile"
     : "";
-
-
 
   return (
     <div
@@ -40,14 +37,7 @@ const Tabs = (props) => {
       data-js-tabs={JSON.stringify({ navigationTargetElementId })}
     >
       {!navigationTargetElementId && (
-        <TabsNavigation
-          titleId={titleId}
-          buttonsInfo={
-            navigationButtonInfo?.length > 0
-              ? navigationButtonInfo
-              : tabsContent
-          }
-        />
+        <TabsNavigation titleId={titleId} buttonsInfo={tabsContent} />
       )}
       <div className="tabs__body">{content(tabsContent, idTabButton)}</div>
     </div>

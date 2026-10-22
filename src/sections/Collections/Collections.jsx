@@ -62,13 +62,8 @@ const Collections = () => {
   };
 
   const tabsContent = [
-    { children: renderCollections(movieItems, "movies"), isActive: true },
-    { children: renderCollections(showItems, "shows") },
-  ];
-
-  const tabsCollectionsButtonInfo = [
-    { title: "Movies", isActive: true },
-    { title: "Shows" },
+    { children: renderCollections(movieItems, "movies"), title: "Movies", isActive: true },
+    { children: renderCollections(showItems, "shows"), title: "Shows" },
   ];
 
   return (
@@ -81,7 +76,6 @@ const Collections = () => {
         titleId="collections-tabs"
         className="collections__tabs"
         isEnableOnlyOnMobile
-        navigationButtonInfo={tabsCollectionsButtonInfo}
         tabsContent={tabsContent}
       />
     </section>
