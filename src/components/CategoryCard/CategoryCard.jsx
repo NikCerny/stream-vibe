@@ -10,6 +10,7 @@ const CategoryCard = (props) => {
     images = [],
     isPopular = false,
     isTrending = false,
+    isTrendingShow = false,
     isNewRelease = false,
     isNewReleaseShow = false,
     isMustWatch = false,
@@ -22,6 +23,7 @@ const CategoryCard = (props) => {
 
   const isPopularClass = isPopular ? "is-popular" : "";
   const isTrendingClass = isTrending ? "is-trending" : "";
+  const isTrendingShowClass = isTrendingShow ? "is-trending-show" : "";
   const isNewReleaseClass = isNewRelease ? "is-new-release" : "";
   const isNewReleaseShowClass = isNewReleaseShow ? "is-new-release-show" : "";
   const isMustWatchClass = isMustWatch ? "is-must-watch" : "";
@@ -101,6 +103,7 @@ const CategoryCard = (props) => {
         "category-card",
         isPopularClass,
         isTrendingClass,
+        isTrendingShowClass,
         isNewReleaseClass,
         isMustWatchClass,
         isNewReleaseShowClass,

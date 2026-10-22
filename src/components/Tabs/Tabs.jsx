@@ -1,5 +1,6 @@
 import "./Tabs.scss";
 import classNames from "classnames";
+import TabsNavigation from "@/components/TabsNavigation";
 
 const content = (arr, idTabButton) => {
   return arr.map(({ children, isActive }, index) => (
@@ -23,19 +24,30 @@ const Tabs = (props) => {
     navigationTargetElementId = null,
     titleId,
     isEnableOnlyOnMobile = false,
+    className,
+    navigationButtonInfo = [],
   } = props;
 
   const isEnableOnlyOnMobileClass = isEnableOnlyOnMobile
     ? "tabs--enable-only-on-mobile"
     : "";
 
+
+
   return (
     <div
-      className={classNames("tabs", isEnableOnlyOnMobileClass)}
+      className={classNames("tabs", className, isEnableOnlyOnMobileClass)}
       data-js-tabs={JSON.stringify({ navigationTargetElementId })}
     >
       {!navigationTargetElementId && (
-        <TabsNavigation titleId={titleId} buttonsInfo={tabsContent} />
+        <TabsNavigation
+          titleId={titleId}
+          buttonsInfo={
+            navigationButtonInfo?.length > 0
+              ? navigationButtonInfo
+              : tabsContent
+          }
+        />
       )}
       <div className="tabs__body">{content(tabsContent, idTabButton)}</div>
     </div>

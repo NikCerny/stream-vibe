@@ -1,6 +1,9 @@
+import { sliderParamsOneHalfFour, sliderParamsTwoFive } from "./sliderSpecificParams";
+
 const movieItems = [
   {
     title: "Our genres",
+    sliderParams: sliderParamsTwoFive,
     items: [
       {
         title: "Action",
@@ -154,17 +157,7 @@ const movieItems = [
   {
     title: "Popular Top 10 In Genres",
     isPopular: true,
-    sliderParams: {
-      loop: true,
-      breakpoints: {
-        1441: {
-          slidesPerView: 4,
-          slidesPerGroup: 4,
-          spaceBetween: 30,
-          allowTouchMove: false,
-        },
-      },
-    },
+    sliderParams: sliderParamsOneHalfFour,
     items: [
       {
         title: "Action",
@@ -315,17 +308,7 @@ const movieItems = [
   {
     title: "Trending Now",
     isTrending: true,
-    sliderParams: {
-      loop: true,
-      breakpoints: {
-        1441: {
-          slidesPerView: 5,
-          slidesPerGroup: 5,
-          spaceBetween: 20,
-          allowTouchMove: false,
-        },
-      },
-    },
+    sliderParams: sliderParamsTwoFive,
     items: [
       {
         images: ["/src/assets/images/categories/trending-movie/1.jpg"],
@@ -417,17 +400,7 @@ const movieItems = [
   {
     title: "New Releases",
     isNewRelease: true,
-    sliderParams: {
-      loop: true,
-      breakpoints: {
-        1441: {
-          slidesPerView: 5,
-          slidesPerGroup: 5,
-          spaceBetween: 20,
-          allowTouchMove: false,
-        },
-      },
-    },
+    sliderParams: sliderParamsTwoFive,
     items: [
       {
         images: ["/src/assets/images/categories/new-releases/1.jpg"],
@@ -514,17 +487,7 @@ const movieItems = [
   {
     title: "Must - Watch Movies",
     isMustWatch: true,
-    sliderParams: {
-      loop: true,
-      breakpoints: {
-        1441: {
-          slidesPerView: 4,
-          slidesPerGroup: 4,
-          spaceBetween: 20,
-          allowTouchMove: false,
-        },
-      },
-    },
+    sliderParams: sliderParamsOneHalfFour,
     items: [
       {
         images: ["/src/assets/images/categories/must-watch/1.jpg"],

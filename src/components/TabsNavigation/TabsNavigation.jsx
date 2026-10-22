@@ -2,11 +2,11 @@ import classNames from "classnames";
 import "./TabsNavigation.scss";
 
 const TabsNavigation = (props) => {
-  const { buttonsInfo = [], titleId, idTabButton, id } = props;
+  const { buttonsInfo = [], titleId, idTabButton, id, className } = props;
 
   return (
     <div
-      className="tabs-navigation"
+      className={classNames("tabs-navigation", className)}
       role="tablist"
       data-js-tabs-navigation=""
       aria-labelledby={titleId}

@@ -54,4 +54,17 @@
     flex-direction: column;
     row-gap: fluid(50, 20);
   }
+
+  &__tabs {
+    .tabs-navigation {
+      &__button {
+        flex-grow: 1;
+      }
+    }
+    .tabs__content {
+      &:not(:last-child) {
+        margin-bottom: fluid-desktop-laptop(150, 120);
+      }
+    }
+  }
 }

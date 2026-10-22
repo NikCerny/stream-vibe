@@ -4,9 +4,11 @@ import SliderNavigation from "@/components/Slider/components/SliderNavigation";
 import CategoryCard from "@/components/CategoryCard";
 import movieItems from "./movieItems";
 import showItems from "./showItems";
+import Tabs from "@/components/Tabs";
 
-const Collections = (props) => {
+const Collections = () => {
   const titleId = "collections-title";
+  const tabsNavigationId = "collections-tabs-navigation";
 
   const sliderTitleIdFormatted = (title, prefix) => {
     return `${title.replaceAll(" ", "-")}-${prefix}-slider-navigation`
@@ -14,83 +16,74 @@ const Collections = (props) => {
       .toLowerCase();
   };
 
+  const renderCollections = (items, type) => {
+    const isShow = type === "shows";
+    const prefix = isShow ? "show" : "movie";
+
+    return (
+      <ul className={`collections__list collections__list--${type}-badge`}>
+        {items.map((collection, index) => {
+          const sliderNavigationId = sliderTitleIdFormatted(
+            collection.title,
+            prefix,
+          );
+
+          return (
+            <li className="collections__item" key={index}>
+              <header className="collections__header">
+                <h3 className="collections__title">{collection.title}</h3>
+                <SliderNavigation mode="tile" id={sliderNavigationId} />
+              </header>
+              <div className="collections__body">
+                <Slider
+                  navigationTargetElementId={sliderNavigationId}
+                  isBeyondTheViewportOnMobileS
+                  sliderParams={collection?.sliderParams}
+                >
+                  {collection.items.map((item, itemIndex) => (
+                    <CategoryCard
+                      {...item}
+                      isPopular={collection?.isPopular}
+                      isTrending={collection?.isTrending}
+                      isTrendingShow={collection?.isTrendingShow}
+                      isNewRelease={collection?.isNewRelease}
+                      isNewReleaseShow={collection?.isNewReleaseShow}
+                      isMustWatch={collection?.isMustWatch}
+                      key={itemIndex}
+                    />
+                  ))}
+                </Slider>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  };
+
+  const tabsContent = [
+    { children: renderCollections(movieItems, "movies"), isActive: true },
+    { children: renderCollections(showItems, "shows") },
+  ];
+
+  const tabsCollectionsButtonInfo = [
+    { title: "Movies", isActive: true },
+    { title: "Shows" },
+  ];
+
   return (
     <section aria-labelledby={titleId} className="collections container">
       <h2 className="visually-hidden" id={titleId}>
         Movies and Shows Collections
       </h2>
-      <ul className="collections__list collections__list--movies-badge">
-        {movieItems.map((movieItem, index) => {
-          return (
-            <li className="collections__item" key={index}>
-              <header className="collections__header">
-                <h3 className="collections__title">{movieItem.title}</h3>
-                <SliderNavigation
-                  mode="tile"
-                  id={sliderTitleIdFormatted(movieItem.title, "movie")}
-                />
-              </header>
-              <div className="collections__body">
-                <Slider
-                  navigationTargetElementId={sliderTitleIdFormatted(
-                    movieItem.title,
-                    "movie",
-                  )}
-                  isBeyondTheViewportOnMobileS
-                  sliderParams={movieItem?.sliderParams}
-                >
-                  {movieItem.items.map((item, index) => (
-                    <CategoryCard
-                      {...item}
-                      isPopular={movieItem?.isPopular}
-                      isTrending={movieItem?.isTrending}
-                      isNewRelease={movieItem?.isNewRelease}
-                      isMustWatch={movieItem?.isMustWatch}
-                      key={index}
-                    />
-                  ))}
-                </Slider>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-      <ul className="collections__list collections__list--shows-badge">
-        {showItems.map((showItem, index) => {
-          return (
-            <li className="collections__item" key={index}>
-              <header className="collections__header">
-                <h3 className="collections__title">{showItem.title}</h3>
-                <SliderNavigation
-                  mode="tile"
-                  id={sliderTitleIdFormatted(showItem.title, "show")}
-                />
-              </header>
-              <div className="collections__body">
-                <Slider
-                  navigationTargetElementId={sliderTitleIdFormatted(
-                    showItem.title,
-                    "show",
-                  )}
-                  isBeyondTheViewportOnMobileS
-                  sliderParams={showItem?.sliderParams}
-                >
-                  {showItem.items.map((item, index) => (
-                    <CategoryCard
-                      {...item}
-                      isPopular={showItem?.isPopular}
-                      isTrending={showItem?.isTrending}
-                      isNewReleaseShow={showItem?.isNewReleaseShow}
-                      isMustWatch={showItem?.isMustWatch}
-                      key={index}
-                    />
-                  ))}
-                </Slider>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+      <Tabs
+        idTabButton={tabsNavigationId}
+        titleId="collections-tabs"
+        className="collections__tabs"
+        isEnableOnlyOnMobile
+        navigationButtonInfo={tabsCollectionsButtonInfo}
+        tabsContent={tabsContent}
+      />
     </section>
   );
 };
