@@ -38,9 +38,8 @@
       }
     }
 
-    display: flex;
-    flex-direction: column;
-    row-gap: fluid(100, 50);
+    display: grid;
+    row-gap: fluid(100, 75);
   }
   &__header {
     display: flex;

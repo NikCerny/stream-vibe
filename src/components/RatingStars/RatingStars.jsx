@@ -3,7 +3,7 @@ import "./RatingStars.scss";
 function starBlock(starCount = 0) {
   const starBlocks = [];
   const fullStars = Math.floor(starCount);
-  const hasHalfStar = starCount - fullStars  >= 0.5;
+  const hasHalfStar = starCount - fullStars >= 0.5;
 
   for (let i = 0; i < 5; i++) {
     let stateClass = "";
@@ -23,7 +23,7 @@ function starBlock(starCount = 0) {
 }
 
 const RatingStars = (props) => {
-  const { starCount, extraText } = props;
+  const { starCount, ratingCount } = props;
 
   return (
     <div
@@ -32,7 +32,7 @@ const RatingStars = (props) => {
       title={`Rating ${starCount} out of 5`}
     >
       {starBlock(starCount)}
-      <span className="rating-stars__extra-text">{extraText}</span>
+      <span className="rating-stars__rating-count">{ratingCount}</span>
     </div>
   );
 };

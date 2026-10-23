@@ -1,5 +1,5 @@
 .badge {
-  padding: 6px 10px;
+  padding: 6px 10px 6px 6px;
   font-size: fluid-desktop-laptop(14, 12);
   font-weight: 500;
   line-height: 1;
@@ -7,7 +7,7 @@
   background-color: var(--color-black-08);
   border: var(--border);
   border-radius: 51px;
-  
+
 
   @include mobile {
     padding-inline: 8px;
@@ -27,5 +27,14 @@
     padding: fluid-desktop-laptop(8, 6);
     font-size: fluid-desktop-laptop(16, 12);
     font-weight: 600;
+  }
+
+  &__icon {
+    --iconWrapper: 24px;
+    --iconSize: 20px;
+    @include laptop {
+      --iconWrapper: 20px;
+      --iconSize: 18px;
+    }
   }
 }

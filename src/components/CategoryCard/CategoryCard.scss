@@ -2,10 +2,12 @@
   --categoryCardImagesGradientOpacity: 1;
   --arrowColor: white;
   --newReleaseColor: var(--color-gray-75);
-  font-size: fluid-desktop-laptop(16, 12);
+  
+  &.badge {
+    font-size: fluid(16, 12);
+  }
 
-  display: flex;
-  flex-direction: column;
+  display: grid;
   padding: fluid(30, 20);
   background-color: var(--color-black-10);
   border: var(--border);
@@ -65,7 +67,6 @@
   &__image {
     display: block;
     width: 100%;
-    height: fluid(124, 67);
     object-fit: cover;
 
     @include laptop {
@@ -106,106 +107,4 @@
   }
 
 
-  &__extra-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-
-  &__duration,
-  &__views,
-  &__new-release,
-  &__season {
-    font-weight: 500;
-    gap: 4px;
-    padding: 6px 10px 6px 6px;
-    display: flex;
-    border: var(--border);
-    border-radius: 51px;
-    background-color: var(--color-black-08);
-    @include laptop {
-      padding: 4px 8px 4px 4px;
-    }
-    &::before {
-      content: "";
-      --size: 24px;
-      @include square(var(--size));
-      @include laptop {
-        --size: 20px;
-      }
-    }
-  }
-
-  &__duration {
-    &::before {
-      background: url("../../assets/icons/watches.svg") center / contain
-        no-repeat;
-    }
-  }
-
-  &__views {
-    &::before {
-      background: url("../../assets/icons/eye.svg") center / contain no-repeat;
-    }
-  }
-
-  &__season {
-    &::before {
-      background: url("../../assets/icons/season.svg") center / contain
-        no-repeat;
-    }
-  }
-
-  &__new-release {
-    width: 100%;
-    justify-content: center;
-    text-wrap: nowrap;
-    &--accent {
-      color: currentColor;
-    }
-  }
-
-
-  &.is-trending,
-  &.is-new-release,
-  &.is-must-watch,
-  &.is-new-release-show,
-  &.is-trending-show {
-    row-gap: fluid(20, 12);
-    padding: fluid(20, 12);
-
-    .category-card__images {
-      display: block;
-
-      &::after {
-        display: none;
-      }
-    }
-    .category-card__image {
-      height: fluid(280, 195);
-    }
-    .category-card__icon {
-      display: none;
-    }
-  }
-
-  &.is-must-watch,
-  &.is-new-release-show,
-  &.is-trending-show {
-    .category-card__image {
-      height: fluid(404, 235);
-    }
-  }
-
-  &__rating {
-    padding: 6px 10px;
-    border: var(--border);
-    background-color: var(--color-black-08);
-    border-radius: 100px;
-
-    @include mobile {
-      padding: 6px 8px;
-    }
-  }
 }

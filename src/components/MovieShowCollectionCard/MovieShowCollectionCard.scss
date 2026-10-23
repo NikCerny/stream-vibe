@@ -1,0 +1,64 @@
+.collection-card {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  padding: fluid(20, 12);
+  row-gap: fluid(20, 12);
+  background-color: var(--color-black-10);
+  border: var(--border);
+  border-radius: var(--border-radius-l);
+
+  @include laptop {
+    border-radius: var(--border-radius-m);
+  }
+
+  @include hover {
+    border-color: currentColor;
+  }
+
+  &:focus-visible {
+    outline-offset: -2px;
+  }
+
+  &__extra-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    width: fit-content;
+
+    &.badge {
+      font-size: fluid(16, 12);
+    }
+
+    &--full-width {
+      width: 100%;
+      justify-content: center;
+      line-height: 1.5;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius-l);
+
+    @include laptop {
+      border-radius: var(--border-radius-m);
+    }
+  }
+
+  &__new-release {
+    width: 100%;
+    justify-content: center;
+    &--accent {
+      color: var(--color-gray-75);
+    }
+  }
+}

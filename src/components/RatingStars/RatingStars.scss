@@ -2,7 +2,7 @@
   @include flex-center;
   column-gap: 4px;
 
-  &__extra-text {
+  &__rating-count {
     font-size: fluid-desktop-laptop(14, 12);
   }
 
@@ -11,10 +11,10 @@
     @include square(var(--size));
     background: url("../../assets/icons/grey-star.svg") center/contain no-repeat;
     &.is-active {
-      background-image: url("../../assets/icons/red-star.svg");
+      background: url("../../assets/icons/red-star.svg") center/contain no-repeat;
     }
     &.is-half-active {
-      background-image: url("../../assets/icons/half-red-star.svg");
+      background: url("../../assets/icons/half-red-star.svg") center/contain no-repeat;
     }
     @include laptop {
       --size: 14px;

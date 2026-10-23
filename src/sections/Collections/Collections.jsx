@@ -5,6 +5,7 @@ import CategoryCard from "@/components/CategoryCard";
 import movieItems from "./movieItems";
 import showItems from "./showItems";
 import Tabs from "@/components/Tabs";
+import MovieShowCollectionCard from "@/components/MovieShowCollectionCard";
 
 const Collections = () => {
   const titleId = "collections-title";
@@ -40,18 +41,21 @@ const Collections = () => {
                   isBeyondTheViewportOnMobileS
                   sliderParams={collection?.sliderParams}
                 >
-                  {collection.items.map((item, itemIndex) => (
-                    <CategoryCard
-                      {...item}
-                      isPopular={collection?.isPopular}
-                      isTrending={collection?.isTrending}
-                      isTrendingShow={collection?.isTrendingShow}
-                      isNewRelease={collection?.isNewRelease}
-                      isNewReleaseShow={collection?.isNewReleaseShow}
-                      isMustWatch={collection?.isMustWatch}
-                      key={itemIndex}
-                    />
-                  ))}
+                  {collection.items.map((item, itemIndex) =>
+                    collection?.isCategory ? (
+                      <CategoryCard {...item} key={itemIndex} />
+                    ) : (
+                      <MovieShowCollectionCard
+                        key={itemIndex}
+                        {...item}
+                        isTrending={collection.isTrending}
+                        isTrendingShow={collection.isTrendingShow}
+                        isNewRelease={collection.isNewRelease}
+                        isNewReleaseShow={collection.isNewReleaseShow}
+                        isMustWatch={collection.isMustWatch}
+                      />
+                    ),
+                  )}
                 </Slider>
               </div>
             </li>
@@ -62,7 +66,11 @@ const Collections = () => {
   };
 
   const tabsContent = [
-    { children: renderCollections(movieItems, "movies"), title: "Movies", isActive: true },
+    {
+      children: renderCollections(movieItems, "movies"),
+      title: "Movies",
+      isActive: true,
+    },
     { children: renderCollections(showItems, "shows"), title: "Shows" },
   ];
 
