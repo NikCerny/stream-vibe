@@ -1,7 +1,6 @@
 .category-card {
   --categoryCardImagesGradientOpacity: 1;
   --arrowColor: white;
-  --newReleaseColor: var(--color-gray-75);
 
   &.badge {
     font-size: fluid-desktop-laptop(16, 12);
@@ -21,7 +20,6 @@
     --categoryCardImagesGradientOpacity: 0;
     border-color: currentColor;
     --arrowColor: currentColor;
-    --newReleaseColor: currentColor;
   }
 
   &:focus-visible {
