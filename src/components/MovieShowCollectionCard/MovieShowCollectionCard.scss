@@ -33,7 +33,7 @@
     width: fit-content;
 
     &.badge {
-      font-size: fluid(16, 12);
+      font-size: fluid-desktop-laptop(16, 12);
     }
 
     &--full-width {
