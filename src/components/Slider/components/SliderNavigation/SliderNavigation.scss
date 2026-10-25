@@ -15,6 +15,14 @@
     }
   }
 
+  &--circle {
+    column-gap: fluid-desktop-laptop(10, 8);
+
+    .slider-navigation__arrow-button {
+      border-radius: 50%;
+    }
+  }
+
   &__arrow-button.button:has(.button__icon:only-child) {
     .button__icon.icon {
       --iconWrapper: 56px;

@@ -1,0 +1,33 @@
+.cast-card {
+  &__image {
+    width: fluid(100, 70);
+    border-radius: var(--border-radius-l);
+
+    @include laptop {
+      border-radius: var(--border-radius-m);
+    }
+  }
+
+  &__name {
+    font-size: fluid-desktop-laptop(18, 16);
+    font-weight: 500;
+  }
+
+  &:has(.cast-card__body) {
+    display: flex;
+    align-items: center;
+    column-gap: fluid-desktop-laptop(10, 8);
+    padding: fluid(14, 10);
+    border: var(--border);
+    background-color: var(--color-black-08);
+    border-radius: var(--border-radius-s);
+
+    .cast-card__image {
+      width: fluid-desktop-laptop(56, 47);
+      border-radius: var(--border-radius-s);
+      @include laptop {
+        border-radius: var(--border-radius-xs);
+      }
+    }
+  }
+}

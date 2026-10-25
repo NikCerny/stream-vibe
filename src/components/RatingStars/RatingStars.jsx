@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import "./RatingStars.scss";
 
 function starBlock(starCount = 0) {
@@ -23,8 +24,14 @@ function starBlock(starCount = 0) {
 }
 
 const RatingStars = (props) => {
-  const { starCount, ratingCount } = props;
+  const {
+    starCount,
+    ratingCount,
+    isLarge, // 
+    className
+  } = props;
 
+  const largeClass = isLarge ? "large" : "";
   return (
     <div
       className="rating-stars"
@@ -32,7 +39,7 @@ const RatingStars = (props) => {
       title={`Rating ${starCount} out of 5`}
     >
       {starBlock(starCount)}
-      <span className="rating-stars__rating-count">{ratingCount}</span>
+      <span className={classNames("rating-stars__rating-count", largeClass, className)}>{ratingCount}</span>
     </div>
   );
 };

@@ -1,16 +1,17 @@
 import "./MovieBannerCard.scss";
 import Button from "@/components/Button";
-import { Image } from "minista/assets";
 
 const MovieBannerCard = (props) => {
-  const { title, description, bannerSrc } = props;
+  const { title, description, bannerSrc, TitleTag = "h2", titleId } = props;
   return (
     <div
       className="movie-banner-card"
       style={{ "--movieBannerImage": `url("${bannerSrc}")` }}
     >
       <div className="movie-banner-card__content">
-        <h2 className="movie-banner-card__title h3">{title}</h2>
+        <TitleTag className="movie-banner-card__title h3" id={titleId}>
+          {title}
+        </TitleTag>
         <div className="movie-banner-card__description hidden-mobile">
           <p>{description}</p>
         </div>

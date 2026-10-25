@@ -1,9 +1,14 @@
 .rating-stars {
-  @include flex-center;
+  display: flex;
+  align-items: center;
   column-gap: 4px;
 
   &__rating-count {
     font-size: fluid-desktop-laptop(14, 12);
+    &.large {
+      font-size: fluid-desktop-laptop(18, 14);
+      line-height: 1.5;
+    }
   }
 
   &__star {
@@ -11,10 +16,12 @@
     @include square(var(--size));
     background: url("../../assets/icons/grey-star.svg") center/contain no-repeat;
     &.is-active {
-      background: url("../../assets/icons/red-star.svg") center/contain no-repeat;
+      background: url("../../assets/icons/red-star.svg") center/contain
+        no-repeat;
     }
     &.is-half-active {
-      background: url("../../assets/icons/half-red-star.svg") center/contain no-repeat;
+      background: url("../../assets/icons/half-red-star.svg") center/contain
+        no-repeat;
     }
     @include laptop {
       --size: 14px;

@@ -1,0 +1,8 @@
+.movie-banner {
+  padding-bottom: fluid(100, 60);
+  .movie-banner-card {
+    &__content {
+      padding-bottom: fluid(20, 16);
+    }
+  }
+}

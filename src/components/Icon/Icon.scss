@@ -1,6 +1,6 @@
 .icon {
   --iconWrapper: #{fluid-desktop-laptop(28, 24)};
-  --iconSize: #{fluid-desktop-laptop(18, 16)};
+  
 
   @include square(var(--iconWrapper));
 
