@@ -15,6 +15,7 @@ const Link = (props) => {
     hasFillIcon = false,
     mode,
     content = "",
+    dataJsAttrs,
   } = props;
   const linkProps = { href, target };
   const title = isLabelHidden ? label : undefined;
@@ -41,6 +42,7 @@ const Link = (props) => {
       title={title}
       aria-label={title}
       {...linkProps}
+      {...dataJsAttrs}
     >
       {logoComponent}
       {iconComponent}

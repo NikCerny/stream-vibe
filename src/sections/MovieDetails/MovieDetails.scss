@@ -19,6 +19,8 @@
   }
 
   &__main {
+    align-self: start;
+    width: 100%;
     display: grid;
     row-gap: fluid-desktop-laptop(30, 20);
 

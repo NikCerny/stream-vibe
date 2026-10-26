@@ -6,15 +6,14 @@ import movieItems from "./movieItems";
 import showItems from "./showItems";
 import Tabs from "@/components/Tabs";
 import MovieShowCollectionCard from "@/components/MovieShowCollectionCard";
+import titleFormatted from "@/utils/titleFormatted";
 
 const Collections = () => {
   const titleId = "collections-title";
   const tabsNavigationId = "collections-tabs-navigation";
 
   const sliderTitleIdFormatted = (title, prefix) => {
-    return `${title.replaceAll(" ", "-")}-${prefix}-slider-navigation`
-      .replace(/-{2,}/g, "-")
-      .toLowerCase();
+    return `${titleFormatted(`${title}-${prefix}`)}-slider-navigation`;
   };
 
   const renderCollections = (items, type) => {

@@ -12,7 +12,7 @@ const Button = (props) => {
     iconName,
     hasFillIcon = false,
     iconPosition = "before", // || after
-    dataJsAttrs
+    dataJsAttrs,
   } = props;
 
   const title = isLabelHidden ? label : undefined;

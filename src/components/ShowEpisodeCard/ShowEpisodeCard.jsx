@@ -7,7 +7,11 @@ const ShowEpisodeCard = (props) => {
   return (
     <div className="episode-card">
       <div className="episode-card__number">{number}</div>
-      <div className="episode-card__player" data-js-video-player="">
+      <div
+        className="episode-card__player"
+        data-js-video-player=""
+        data-js-video-player-fullscreen=""
+      >
         <video
           className="episode-card__video"
           src={video.src}

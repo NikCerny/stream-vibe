@@ -19,7 +19,9 @@ const Header = (props) => {
       <a
         href={href}
         className={classNames("header__menu-link link", {
-          "is-active": href === url,
+          "is-active":
+            href === url ||
+            (href === "/movies" && /^\/(movie|show)\//.test(url)),
         })}
       >
         {label}
