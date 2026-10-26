@@ -73,4 +73,24 @@
       }
     }
   }
+
+  &--dark {
+    display: grid;
+    row-gap: fluid-desktop-laptop(20, 16);
+
+    .accordion-group__item {
+      padding: fluid(24, 16) fluid(50, 20);
+      border: var(--border);
+      background-color: var(--color-black-06);
+      border-radius: var(--border-radius-l);
+
+      @include laptop {
+        border-radius: var(--border-radius-m);
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
 }

@@ -3,6 +3,8 @@
   cursor: pointer;
   user-select: none;
   margin-block: auto;
+  --arrowDownColor: var(--color-gray-60);
+
   &__summary {
     color: var(--color-white);
 
@@ -13,6 +15,7 @@
 
     @include hover {
       color: var(--color-red-60);
+      --arrowDownColor: var(--color-red-60);
     }
   }
 
@@ -40,6 +43,13 @@
     }
   }
 
+  &__subtitle {
+    font-size: 0.75em;
+    font-weight: 500;
+    color: var(--color-gray-60);
+    margin-left: fluid(10, 6);
+  }
+
   &__details[open] {
     .accordion__title::before {
       rotate: 0deg;
@@ -47,6 +57,9 @@
 
     & + .accordion__content {
       grid-template-rows: 1fr;
+    }
+    .accordion__arrow {
+      rotate: 180deg;
     }
   }
 
@@ -65,5 +78,27 @@
     &-body {
       margin-top: 20px;
     }
+  }
+
+  &:has(.accordion__arrow) {
+    .accordion__title {
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &__arrow {
+    @include flex-center(true);
+    @include square(fluid-desktop-laptop(52, 44));
+    @include abs-y;
+    right: 0;
+
+    color: var(--arrowDownColor);
+    background-color: var(--color-black-08);
+    border: var(--border);
+    border-radius: 50%;
+    transition-duration: var(--transition-duration);
   }
 }

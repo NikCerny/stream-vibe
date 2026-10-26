@@ -70,10 +70,13 @@ const Questions = () => {
           <Accordion
             key={index}
             isOpen={index === 0}
-            titleId={`question-${index}`}
+            titleId={`question-${index + 1}`}
             detailsName="questions"
-            {...item}
-          ></Accordion>
+            title={item.title}
+            titleClassName="h5"
+          >
+            <p>{item.description}</p>
+          </Accordion>
         ))}
       </AccordionGroup>
     </Section>

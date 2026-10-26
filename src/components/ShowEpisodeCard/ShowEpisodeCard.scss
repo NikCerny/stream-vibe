@@ -1,0 +1,147 @@
+.episode-card {
+  display: grid;
+  grid-template-columns: fluid-desktop-laptop(60, 30) 172px 1fr;
+  align-items: center;
+  gap: fluid-desktop-laptop(20, 18);
+  padding-block: 40px;
+  
+  --titleHoverColor: var(--color-white);
+  @include hover {
+    --titleHoverColor: var(--color-red-60);
+  }
+
+  @include laptop {
+    padding-top: 30px;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "player number"
+      "body body";
+    padding: 20px;
+    background-color: var(--color-black-08);
+    border-radius: var(--border-radius-s);
+  }
+
+  &__number {
+    font-size: fluid-desktop-laptop(30, 24);
+    font-weight: 600;
+
+    @include mobile {
+      grid-area: number;
+    }
+  }
+
+  &__player {
+    position: relative;
+    border: var(--border);
+    border-radius: var(--border-radius-l);
+    overflow: hidden;
+
+    @include mobile {
+      grid-area: player;
+    }
+
+    &::before {
+      @include abs-cover;
+
+      content: "";
+      background-image: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.5) 0%,
+        rgba(0, 0, 0, 0.5) 100%
+      );
+    }
+
+    &:has(video[controls])::before {
+      display: none;
+    }
+  }
+
+  &__video {
+    width: 172px;
+    height: 118px;
+    object-fit: cover;
+
+    @include mobile {
+      width: 100%;
+      height: 200px;
+    }
+
+    @include mobile-s {
+      height: 118px;
+    }
+  }
+
+  &__play-button {
+    @include abs-center;
+    @include reset-button;
+    @include flex-center;
+    @include square(50px);
+
+    color: var(--color-white);
+    background-color: color-mix(in srgb, var(--color-black) 60%, transparent);
+    border: none;
+    border-radius: 50%;
+
+    @include hover {
+      background-color: var(--color-red-60);
+    }
+
+    &:active {
+      scale: 1.05;
+    }
+
+    &:not(.is-active) {
+      display: none;
+    }
+
+    &-icon {
+      &.icon {
+        --iconWrapper: 30px;
+      }
+    }
+  }
+
+  &__body {
+    display: grid;
+    row-gap: fluid-desktop-laptop(14, 10);
+
+    @include mobile {
+      grid-area: body;
+    }
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px 16px;
+
+    @include mobile {
+      flex-direction: column-reverse;
+      align-items: start;
+    }
+  }
+
+  &__duration {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+    padding: fluid-desktop-laptop(8, 6) fluid-desktop-laptop(10, 6);
+    background-color: var(--color-black-08);
+    border: var(--border);
+    border-radius: var(--border-radius-s);
+
+    @include laptop {
+      border-radius: var(--border-radius-xs);
+    }
+  }
+
+  &__title {
+    color: var(--titleHoverColor);
+    transition-duration: var(--transition-duration);
+  }
+}

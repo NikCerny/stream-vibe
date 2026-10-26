@@ -2,7 +2,7 @@ import "./MovieBanner.scss";
 import MovieBannerCard from "@/components/MovieBannerCard";
 import movieItems from "@/sections/MoviesBanner/movieItems";
 
-const MoviesBanner = (props) => {
+const MovieBanner = (props) => {
   const titleId = "movie-banner-title";
 
   return (
@@ -18,4 +18,4 @@ const MoviesBanner = (props) => {
   );
 };
 
-export default MoviesBanner;
+export default MovieBanner;

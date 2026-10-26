@@ -9,7 +9,7 @@ import Icon from "@/components/Icon";
 import Tags from "@/components/Tags";
 import Ratings from "@/components/Ratings";
 
-const MovieDetails = (props) => {
+const MovieDetails = ({ showSeasons }) => {
   const titleId = "movie-details-title";
   const castSliderNavigationId = "movie-cast-slider-navigation";
   const reviewsSliderNavigationId = "movie-reviews-slider-navigation";
@@ -80,6 +80,12 @@ const MovieDetails = (props) => {
         Detailed movie information
       </h2>
       <div className="movie-details__main">
+        {showSeasons && (
+          <div className="movie-details__panel movie-details__panel--seasons">
+            <h3 className="h4">Seasons and Episodes</h3>
+            {showSeasons}
+          </div>
+        )}
         <div className="movie-details__panel movie-details__panel--description">
           <div className="movie-details__content">
             <h3 className="movie-details__title">Description</h3>
@@ -118,7 +124,7 @@ const MovieDetails = (props) => {
             ))}
           </Slider>
         </div>
-        <div className="movie-details__panel">
+        <div className="movie-details__panel movie-details__panel--reviews">
           <header className="movie-details__panel-header">
             <h3 className="movie-details__title">Reviews</h3>
             <Button

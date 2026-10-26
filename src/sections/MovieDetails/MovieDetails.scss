@@ -6,8 +6,10 @@
   gap: 20px;
   padding-bottom: fluid(150, 80);
 
-
   @include tablet {
+    .movie-details__panel--seasons {
+      order: -3;
+    }
     .movie-details__panel--description {
       order: -2;
     }
@@ -42,6 +44,11 @@
       justify-content: space-between;
       align-items: center;
       column-gap: 10px;
+    }
+
+    &--seasons,
+    &--reviews {
+      row-gap: fluid(40, 20);
     }
   }
 
