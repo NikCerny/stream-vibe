@@ -1,0 +1,43 @@
+.checkbox {
+  display: flex;
+  gap: fluid-desktop-laptop(10, 8);
+  align-items: center;
+
+  &__input {
+    --checkboxSize: 28px;
+    @include square(var(--checkboxSize));
+    @include flex-center;
+    appearance: none;
+    border-radius: 4px;
+    border: var(--border);
+    margin: 0;
+
+    @include laptop {
+      --checkboxSize: 24px;
+    }
+
+    &:not(:checked) {
+      &::after {
+        @include hide;
+      }
+    }
+
+    &::after {
+      content: "✓";
+      font-weight: 500;
+      color: var(--color-white);
+    }
+
+    &:user-invalid {
+      border-color: var(--color-red);
+    }
+
+    @include hover {
+      border-color: var(--color-red-60);
+    }
+  }
+
+  @include hover {
+    color: var(--color-red-60);
+  }
+}

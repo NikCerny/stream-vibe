@@ -3,9 +3,7 @@ import MovieDetails from "@/sections/MovieDetails";
 import movieItems from "@/sections/MoviesBanner/movieItems";
 import titleFormatted from "@/utils/titleFormatted";
 
-export const metadata = {
-  title: "Movie - Kantara",
-};
+
 
 export const getStaticData = () =>
   movieItems

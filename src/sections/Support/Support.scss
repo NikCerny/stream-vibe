@@ -1,0 +1,68 @@
+.support {
+  display: grid;
+  justify-content: center;
+  @include tablet-above {
+    grid-template-columns: 1fr 61.2%;
+  }
+
+  gap: fluid-desktop-laptop(80, 50);
+  padding-bottom: fluid(150, 80);
+  &__image {
+    object-fit: cover;
+    width: fluid(533, 357);
+    height: fluid(477, 344);
+    border-radius: 6px;
+    border: 6px solid var(--color-black-15);
+    overflow: hidden;
+    justify-self: center;
+
+    @include mobile-s {
+      border-radius: 4px;
+    }
+  }
+
+  &__preview {
+    display: grid;
+    row-gap: fluid(50, 30);
+    justify-content: center;
+  }
+
+  &__info {
+    display: grid;
+    row-gap: 10px;
+  }
+
+  &__form {
+    padding: fluid(50, 24);
+    display: grid;
+    gap: fluid(50, 20) fluid-desktop-laptop(50, 20);
+    border: var(--border);
+    background-color: var(--color-black-06);
+    @include mobile-above {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__cell {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: fluid(16, 12);
+
+    &--wide {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include mobile {
+      flex-direction: column;
+      gap: 20px;
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

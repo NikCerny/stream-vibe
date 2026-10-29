@@ -10,8 +10,12 @@
     position: fixed;
   }
 
-  &:not(.is-fixed){
-    padding-bottom: fluid-desktop-laptop(50, 40);
+  &:not(.is-fixed) {
+    padding-bottom: fluid(73, 54);
+
+    @include mobile-s {
+      padding-block: 18px;
+    }
   }
 
   transition:

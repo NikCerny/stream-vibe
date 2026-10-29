@@ -1,0 +1,139 @@
+.select {
+  align-self: stretch;
+
+  &__default-control {
+    @include mobile-above {
+      @include visually-hidden;
+    }
+  }
+
+  &__default-control.field__control {
+    width: auto;
+  }
+
+  &__custom {
+    position: relative;
+
+    @include mobile {
+      @include visually-hidden;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 6px;
+    transition-duration: var(--transition-duration);
+
+    @include laptop {
+      column-gap: 4px;
+    }
+
+    &::after {
+      width: 8px;
+      height: 8px;
+      content: "";
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      rotate: 45deg;
+      transition: rotate var(--transition-duration);
+
+      @include laptop {
+        width: 7px;
+        height: 7px;
+      }
+    }
+
+    &.is-expanded::after {
+      rotate: -135deg;
+    }
+  }
+
+  &__button-value {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+  }
+
+  &__flag {
+    display: block;
+    width: fluid-desktop-laptop(40, 38);
+    height: fluid-desktop-laptop(26, 24);
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  &__dropdown {
+    position: absolute;
+    z-index: 10;
+    top: calc(100% + 4px);
+    display: grid;
+    row-gap: 5px;
+    min-width: 150px;
+    max-width: 150px;
+    max-height: 250px;
+    overflow-y: auto;
+    padding: 5px;
+    border: var(--border);
+    border-radius: 8px;
+    background-color: var(--color-black-10);
+    transition-duration: var(--transition-duration);
+
+    &.is-left-sided {
+      left: 0;
+      transform-origin: 0 0;
+    }
+
+    &.is-right-sided {
+      right: 0;
+      transform-origin: 100% 0;
+    }
+
+    &:not(.is-expanded) {
+      @include hide;
+
+      scale: 0;
+    }
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    padding: 10px;
+    border: var(--border);
+    border-radius: inherit;
+
+    > span {
+      flex: 1;
+    }
+
+    @include hover {
+      color: var(--color-red-60);
+      background-color: var(--color-black-08);
+    }
+
+    &.is-selected {
+      color: var(--color-red-60);
+
+      &::after {
+        content: "\2713";
+      }
+    }
+
+    &.is-current {
+      border-color: var(--color-red-60);
+    }
+  }
+
+  &__button,
+  &__option {
+    user-select: none;
+    cursor: pointer;
+
+    * {
+      pointer-events: none;
+    }
+  }
+}

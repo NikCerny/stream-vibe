@@ -4,9 +4,6 @@ import ShowBanner from "@/sections/ShowBanner";
 import movieItems from "@/sections/MoviesBanner/movieItems";
 import titleFormatted from "@/utils/titleFormatted";
 
-export const metadata = {
-  title: "Show - Stranger Things",
-};
 
 export const getStaticData = () =>
   movieItems
