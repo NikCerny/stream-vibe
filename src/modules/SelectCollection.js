@@ -1,6 +1,8 @@
+import BaseComponent from "@/modules/generic/BaseComponent";
+
 const rootSelector = "[data-js-select]";
 
-class Select {
+class Select extends BaseComponent {
   selectors = {
     root: rootSelector,
     button: "[data-js-select-button]",
@@ -8,6 +10,7 @@ class Select {
     buttonValue: "[data-js-select-button-value]",
     dropdown: "[data-js-select-dropdown]",
     option: "[data-js-select-option]",
+    defaultControl: "[data-js-select-default-control]",
   };
 
   stateClasses = {
@@ -18,9 +21,10 @@ class Select {
     isOnTheRightSide: "is-right-sided",
   };
 
-  initialStates = {
+  initialState = {
     isExpanded: false,
     currentOptionIndex: null,
+    selectedOptionElement: null,
   };
 
   stateAttributes = {
@@ -29,51 +33,66 @@ class Select {
     ariaActiveDescendant: "aria-activedescendant",
   };
 
-  constructor(rootElem) {
-    this.rootElem = rootElem;
-    this.buttonElem = this.rootElem.querySelector(this.selectors.button);
-    this.buttonFlagElem = this.rootElem.querySelector(this.selectors.buttonFlag);
-    this.buttonValueElem = this.rootElem.querySelector(this.selectors.buttonValue);
-    this.dropdownElem = this.rootElem.querySelector(this.selectors.dropdown);
-    this.selectElem = this.rootElem.querySelector(
-      "[data-js-select-default-control]",
+  constructor(rootElement) {
+    super();
+
+    this.rootElement = rootElement;
+    this.buttonElement = this.rootElement.querySelector(this.selectors.button);
+    this.buttonFlagElement = this.rootElement.querySelector(
+      this.selectors.buttonFlag,
+    );
+    this.buttonValueElement = this.rootElement.querySelector(
+      this.selectors.buttonValue,
+    );
+    this.dropdownElement = this.rootElement.querySelector(
+      this.selectors.dropdown,
+    );
+    this.originalControlElement = this.rootElement.querySelector(
+      this.selectors.defaultControl,
     );
 
     if (
-      !this.buttonElem ||
-      !this.buttonFlagElem ||
-      !this.buttonValueElem ||
-      !this.dropdownElem ||
-      !this.selectElem
+      !this.buttonElement ||
+      !this.buttonFlagElement ||
+      !this.buttonValueElement ||
+      !this.dropdownElement ||
+      !this.originalControlElement
     ) {
       return;
     }
 
-    this.optionElems = this.dropdownElem.querySelectorAll(
+    this.optionElements = this.dropdownElement.querySelectorAll(
       this.selectors.option,
     );
 
-    this.selectedOptionElem = this.dropdownElem.querySelector(
-      `.${this.stateClasses.isSelected}`,
-    );
-    this.currentOptionIndex = Math.max(
-      [...this.optionElems].indexOf(
-        this.dropdownElem.querySelector(`.${this.stateClasses.isCurrent}`),
-      ),
+    if (this.optionElements.length === 0) {
+      return;
+    }
+
+    const selectedOptionIndex = Math.max(
+      this.originalControlElement.selectedIndex,
       0,
     );
 
+    this.state = this.getProxyState({
+      ...this.initialState,
+      currentOptionIndex: selectedOptionIndex,
+      selectedOptionElement: this.optionElements[selectedOptionIndex],
+    });
+
     this.bindEvents();
-    this.syncFromNativeSelect();
-    this.updateButtonUI();
+    this.updateUI();
     this.fixDropdownPosition();
   }
 
   bindEvents() {
-    this.buttonElem.addEventListener("click", this.onButtonClick);
-    this.dropdownElem.addEventListener("click", this.onDropdownClick);
-    this.buttonElem.addEventListener("keydown", this.onKeyDown);
-    this.selectElem.addEventListener("change", this.onNativeSelectChange);
+    this.buttonElement.addEventListener("click", this.onButtonClick);
+    this.dropdownElement.addEventListener("click", this.onDropdownClick);
+    this.buttonElement.addEventListener("keydown", this.onKeyDown);
+    this.originalControlElement.addEventListener(
+      "change",
+      this.onOriginalControlChange,
+    );
     document.addEventListener("click", this.onDocumentClick);
 
     this.mobileAboveMediaQuery = window.matchMedia("(width > 768.98px)");
@@ -85,103 +104,140 @@ class Select {
     window.addEventListener("resize", this.fixDropdownPosition);
   }
 
+  updateUI() {
+    const { isExpanded, currentOptionIndex, selectedOptionElement } =
+      this.state;
+
+    if (!selectedOptionElement) {
+      return;
+    }
+
+    const selectedOptionValue =
+      selectedOptionElement.dataset.value ??
+      selectedOptionElement.textContent.trim();
+    const currentOptionElement = this.optionElements[currentOptionIndex];
+
+    const updateOriginalControl = () => {
+      this.originalControlElement.value = selectedOptionValue;
+    };
+
+    const updateButton = () => {
+      this.buttonValueElement.lastElementChild.textContent =
+        selectedOptionValue;
+      this.buttonFlagElement.src = selectedOptionElement.dataset.imgSrc;
+      this.buttonElement.classList.toggle(
+        this.stateClasses.isExpanded,
+        isExpanded,
+      );
+      this.buttonElement.setAttribute(
+        this.stateAttributes.ariaExpanded,
+        isExpanded,
+      );
+
+      if (currentOptionElement) {
+        this.buttonElement.setAttribute(
+          this.stateAttributes.ariaActiveDescendant,
+          currentOptionElement.id,
+        );
+      }
+    };
+
+    const updateDropdown = () => {
+      this.dropdownElement.classList.toggle(
+        this.stateClasses.isExpanded,
+        isExpanded,
+      );
+    };
+
+    const updateOptions = () => {
+      this.optionElements.forEach((optionElement, index) => {
+        const isCurrent = currentOptionIndex === index;
+        const isSelected = selectedOptionElement === optionElement;
+
+        optionElement.classList.toggle(this.stateClasses.isCurrent, isCurrent);
+        optionElement.classList.toggle(
+          this.stateClasses.isSelected,
+          isSelected,
+        );
+        optionElement.setAttribute(
+          this.stateAttributes.ariaSelected,
+          isSelected,
+        );
+      });
+    };
+
+    updateOriginalControl();
+    updateButton();
+    updateDropdown();
+    updateOptions();
+  }
+
   onButtonClick = () => {
-    const shouldExpand = !this.isExpanded;
-    this.setExpanded(shouldExpand);
-    if (shouldExpand) {
-      this.updateActiveDescendant();
+    this.state.isExpanded = !this.state.isExpanded;
+
+    if (this.state.isExpanded) {
       this.fixDropdownPosition();
     }
   };
 
-  get isExpanded() {
-    return this.dropdownElem.classList.contains(this.stateClasses.isExpanded);
-  }
-
-  setExpanded(isExpanded) {
-    this.dropdownElem.classList.toggle(this.stateClasses.isExpanded, isExpanded);
-    this.buttonElem.classList.toggle(this.stateClasses.isExpanded, isExpanded);
-    this.buttonElem.setAttribute(this.stateAttributes.ariaExpanded, isExpanded);
-  }
-
   onDocumentClick = (event) => {
-    if (!this.rootElem.contains(event.target)) {
-      this.setExpanded(false);
+    if (!this.rootElement.contains(event.target)) {
+      this.state.isExpanded = false;
     }
   };
 
   onDropdownClick = (event) => {
-    const optionElem = event.target.closest(this.selectors.option);
-    if (!optionElem) return;
+    const optionElement = event.target.closest(this.selectors.option);
+    if (!optionElement) return;
 
-    const optionIndex = [...this.optionElems].indexOf(optionElem);
-    this.onOptionClick(optionElem, optionIndex);
+    const optionIndex = [...this.optionElements].indexOf(optionElement);
+    this.onOptionClick(optionElement, optionIndex);
   };
 
-  onNativeSelectChange = () => {
-    this.syncFromNativeSelect();
-    this.updateButtonUI();
+  onOriginalControlChange = () => {
+    const selectedOptionIndex = this.originalControlElement.selectedIndex;
+    const selectedOptionElement = this.optionElements[selectedOptionIndex];
+
+    if (!selectedOptionElement) return;
+
+    this.state.selectedOptionElement = selectedOptionElement;
+    this.state.currentOptionIndex = selectedOptionIndex;
   };
 
-  syncFromNativeSelect() {
-    if (!this.selectElem) return;
+  onOptionClick = (optionElement, optionIndex) => {
+    if (!optionElement || optionIndex < 0) return;
 
-    const selectedIndex = [...this.optionElems].findIndex(
-      (optionElem) => optionElem.dataset.value === this.selectElem.value,
+    this.state.selectedOptionElement = optionElement;
+    this.state.currentOptionIndex = optionIndex;
+    this.state.isExpanded = false;
+    this.originalControlElement.dispatchEvent(
+      new Event("change", { bubbles: true }),
     );
-    if (selectedIndex < 0) return;
-
-    this.optionElems.forEach((optionElem, index) => {
-      const isSelected = index === selectedIndex;
-      optionElem.classList.toggle(this.stateClasses.isSelected, isSelected);
-      optionElem.setAttribute(this.stateAttributes.ariaSelected, isSelected);
-    });
-
-    this.selectedOptionElem = this.optionElems[selectedIndex];
-    this.setCurrentOption(selectedIndex);
-  }
-
-  onOptionClick = (newOptionElem, newOptionIndex) => {
-    if (!newOptionElem || newOptionIndex < 0) return;
-
-    this.selectElem.value = newOptionElem.dataset.value;
-    this.selectElem.dispatchEvent(new Event("change", { bubbles: true }));
-    this.setCurrentOption(newOptionIndex);
-    this.updateButtonUI();
-    this.setExpanded(false);
-    this.buttonElem.focus();
+    this.buttonElement.focus();
   };
 
-  updateButtonUI() {
-    const newSelectedOptionValue = this.selectedOptionElem.textContent.trim();
-    this.buttonValueElem.lastElementChild.textContent = newSelectedOptionValue;
-    this.buttonFlagElem.src = this.selectedOptionElem.dataset.imgSrc;
-  }
-
-  fixDropdownPosition() {
-    if (!this.dropdownElem || !this.buttonElem) return;
-
+  fixDropdownPosition = () => {
     const viewportWidth = document.documentElement.clientWidth;
-    const dropdownRect = this.dropdownElem.getBoundingClientRect();
-    const buttonRect = this.buttonElem.getBoundingClientRect();
-    const shouldOpenToLeft = buttonRect.left + dropdownRect.width > viewportWidth;
+    const dropdownRect = this.dropdownElement.getBoundingClientRect();
+    const buttonRect = this.buttonElement.getBoundingClientRect();
+    const shouldOpenToLeft =
+      buttonRect.left + dropdownRect.width > viewportWidth;
 
-    this.dropdownElem.classList.toggle(
+    this.dropdownElement.classList.toggle(
       this.stateClasses.isOnTheLeftSide,
       !shouldOpenToLeft,
     );
-
-    this.dropdownElem.classList.toggle(
+    this.dropdownElement.classList.toggle(
       this.stateClasses.isOnTheRightSide,
       shouldOpenToLeft,
     );
-  }
+  };
 
   onKeyDown = (event) => {
     const { code } = event;
 
     if (code === "Tab") {
-      this.setExpanded(false);
+      this.state.isExpanded = false;
       return;
     }
 
@@ -200,75 +256,61 @@ class Select {
   };
 
   onArrowUpKeyDown = () => {
-    if (!this.isExpanded) {
-      this.setExpanded(true);
-      this.updateActiveDescendant();
+    if (!this.state.isExpanded) {
+      this.state.isExpanded = true;
+      this.fixDropdownPosition();
       return;
     }
+
     this.moveCurrentOption(-1);
   };
 
   onArrowDownKeyDown = () => {
-    if (!this.isExpanded) {
-      this.setExpanded(true);
-      this.updateActiveDescendant();
+    if (!this.state.isExpanded) {
+      this.state.isExpanded = true;
+      this.fixDropdownPosition();
       return;
     }
+
     this.moveCurrentOption(1);
   };
 
   moveCurrentOption = (direction) => {
-    const nextIndex =
-      (this.currentOptionIndex + direction + this.optionElems.length) %
-      this.optionElems.length;
-    this.setCurrentOption(nextIndex);
-    this.updateActiveDescendant();
+    const nextOptionIndex =
+      (this.state.currentOptionIndex + direction + this.optionElements.length) %
+      this.optionElements.length;
+
+    this.state.currentOptionIndex = nextOptionIndex;
   };
 
   onEnterKeyDown = () => {
-    if (!this.isExpanded) {
-      this.setExpanded(true);
-      this.updateActiveDescendant();
+    if (!this.state.isExpanded) {
+      this.state.isExpanded = true;
+      this.fixDropdownPosition();
       return;
     }
 
-    const currentOption = this.optionElems[this.currentOptionIndex];
-    this.onOptionClick(currentOption, this.currentOptionIndex);
+    const currentOptionElement =
+      this.optionElements[this.state.currentOptionIndex];
+    this.onOptionClick(currentOptionElement, this.state.currentOptionIndex);
   };
 
   onEscapeKeyDown = () => {
-    this.setExpanded(false);
+    this.state.isExpanded = false;
   };
 
   updateResponsiveAccessibility = () => {
     const isCustomSelectVisible = this.mobileAboveMediaQuery.matches;
 
     if (isCustomSelectVisible) {
-      this.selectElem.tabIndex = -1;
-      this.selectElem.setAttribute("aria-hidden", "true");
+      this.originalControlElement.tabIndex = -1;
+      this.originalControlElement.setAttribute("aria-hidden", "true");
       return;
     }
 
-    this.selectElem.removeAttribute("tabindex");
-    this.selectElem.removeAttribute("aria-hidden");
+    this.originalControlElement.removeAttribute("tabindex");
+    this.originalControlElement.removeAttribute("aria-hidden");
   };
-
-  setCurrentOption(index) {
-    this.optionElems.forEach((optionElem, optionIndex) => {
-      optionElem.classList.toggle(
-        this.stateClasses.isCurrent,
-        optionIndex === index,
-      );
-    });
-    this.currentOptionIndex = index;
-  }
-
-  updateActiveDescendant() {
-    this.buttonElem.setAttribute(
-      this.stateAttributes.ariaActiveDescendant,
-      this.optionElems[this.currentOptionIndex].id,
-    );
-  }
 }
 
 class SelectCollection {
