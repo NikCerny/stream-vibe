@@ -35,7 +35,9 @@ class Select {
     this.buttonFlagElem = this.rootElem.querySelector(this.selectors.buttonFlag);
     this.buttonValueElem = this.rootElem.querySelector(this.selectors.buttonValue);
     this.dropdownElem = this.rootElem.querySelector(this.selectors.dropdown);
-    this.selectElem = this.rootElem.querySelector("[data-js-select-control]");
+    this.selectElem = this.rootElem.querySelector(
+      "[data-js-select-default-control]",
+    );
 
     if (
       !this.buttonElem ||

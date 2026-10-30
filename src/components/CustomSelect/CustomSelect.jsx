@@ -1,8 +1,16 @@
-const CustomSelect = ({ countries, dropdownId, labelId }) => {
+import cx from "classnames";
+
+const CustomSelect = ({
+  options,
+  selectedOption,
+  dropdownId,
+  labelId,
+  className,
+}) => {
   return (
     <div className="select__custom">
       <div
-        className="select__button field__control"
+        className={cx("select__button", className)}
         tabIndex="0"
         role="combobox"
         aria-expanded="false"
@@ -14,11 +22,11 @@ const CustomSelect = ({ countries, dropdownId, labelId }) => {
         <span className="select__button-value" data-js-select-button-value>
           <img
             className="select__flag"
-            src={countries[0].imgSrc}
+            src={selectedOption.imgSrc}
             data-js-select-button-flag
             alt=""
           />
-          <span>{countries[0].dialCode}</span>
+          <span>{selectedOption.value}</span>
         </span>
       </div>
       <div
@@ -28,19 +36,22 @@ const CustomSelect = ({ countries, dropdownId, labelId }) => {
         aria-labelledby={`${labelId}-label`}
         data-js-select-dropdown
       >
-        {countries.map(({ dialCode, imgSrc }, index) => (
+        {options.map(({ value, imgSrc, isSelected }, index) => (
           <div
-            className={`select__option${index === 0 ? " is-selected is-current" : ""}`}
+            className={cx("select__option", {
+              "is-selected": isSelected,
+              "is-current": isSelected,
+            })}
             id={`${dropdownId}-option-${index}`}
             role="option"
-            aria-selected={index === 0}
-            data-value={dialCode}
+            aria-selected={Boolean(isSelected)}
+            data-value={value}
             data-img-src={imgSrc}
             data-js-select-option
-            key={dialCode}
+            key={index}
           >
             <img className="select__flag" src={imgSrc} alt="" />
-            <span>{dialCode}</span>
+            <span>{value}</span>
           </div>
         ))}
       </div>

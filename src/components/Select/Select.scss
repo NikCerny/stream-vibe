@@ -31,13 +31,14 @@
     }
 
     &::after {
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       content: "";
-      border-right: 2px solid currentColor;
-      border-bottom: 2px solid currentColor;
+      border-right: 2px solid var(--color-gray-60);
+      border-bottom: 2px solid var(--color-gray-60);
       rotate: 45deg;
       transition: rotate var(--transition-duration);
+      margin-left: 5px;
 
       @include laptop {
         width: 7px;
@@ -47,6 +48,10 @@
 
     &.is-expanded::after {
       rotate: -135deg;
+    }
+
+    &.field__control {
+      padding-inline: fluid-desktop-laptop(12, 8);
     }
   }
 
@@ -67,13 +72,14 @@
   &__dropdown {
     position: absolute;
     z-index: 10;
-    top: calc(100% + 4px);
+    top: calc(100% + 5px);
     display: grid;
     row-gap: 5px;
-    min-width: 150px;
-    max-width: 150px;
+    min-width: 155px;
+    max-width: 155px;
     max-height: 250px;
     overflow-y: auto;
+    overscroll-behavior: none;
     padding: 5px;
     border: var(--border);
     border-radius: 8px;
@@ -104,6 +110,7 @@
     padding: 10px;
     border: var(--border);
     border-radius: inherit;
+    margin-right: 10px;
 
     > span {
       flex: 1;
@@ -119,6 +126,7 @@
 
       &::after {
         content: "\2713";
+        margin-right: 5px;
       }
     }
 

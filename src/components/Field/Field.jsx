@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import "./Field.scss";
-import Select from "@/components/Select";
 
 const Field = (props) => {
   const {
@@ -11,6 +10,7 @@ const Field = (props) => {
     type = "text", // || email
     placeholder,
     inputMode,
+    renderBeforeComponent,
   } = props;
   const labelId = label
     .trim()
@@ -22,7 +22,10 @@ const Field = (props) => {
   if (inputMode === "tel") {
     inputBlock = (
       <div className="field__body" data-js-phone-input>
-        <Select mode="phone" label="Phone country code"></Select>
+        {renderBeforeComponent?.(
+          "field__control field__control--select",
+          "field__control",
+        )}
         <input
           type={type}
           id={labelId}
@@ -64,7 +67,9 @@ const Field = (props) => {
           className="field__control field__control--textarea"
           placeholder={placeholder}
         ></textarea>
-      ) : inputBlock}
+      ) : (
+        inputBlock
+      )}
     </div>
   );
 };

@@ -2,7 +2,7 @@ import IMask from "imask";
 import phoneCountries from "./phoneCountries.js";
 
 const rootSelector = "[data-js-phone-input]";
-const selectSelector = "[data-js-select-control]";
+const selectSelector = "[data-js-select-default-control]";
 const inputSelector = "[data-js-phone-input-control]";
 
 class InputMask {

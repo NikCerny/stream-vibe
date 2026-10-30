@@ -3,9 +3,16 @@ import "./Support.scss";
 import { Image } from "minista/assets";
 import Checkbox from "@/components/Checkbox";
 import Button from "@/components/Button";
+import phoneCountries from "@/modules/phoneCountries.js";
+import Select from "@/components/Select";
 
 const Support = (props) => {
   const titleId = "support-title";
+  const selectOptions = phoneCountries.map(({ dialCode: value, ...country }) => ({
+    ...country,
+    value,
+  }));
+
   return (
     <section className="support container" aria-labelledby="support-title">
       <div className="support__preview">
@@ -50,6 +57,19 @@ const Support = (props) => {
           placeholder="000 000 000"
           className="support__cell"
           inputMode="tel"
+          renderBeforeComponent={
+            (defaultControlClassName, customControlClassName) => (
+              <Select
+                mode="phone"
+                label="Phone country code"
+                options={selectOptions}
+                classNames={{
+                  defaultControl: defaultControlClassName,
+                  customControl: customControlClassName,
+                }}
+              ></Select>
+            )
+          }
         ></Field>
         <Field
           label="Message"
