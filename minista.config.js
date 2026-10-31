@@ -7,18 +7,58 @@ import {
 } from "minista";
 import path from "path";
 
-export default defineConfig(({ command }) => ({
+const clientEntry = path.resolve("src/main.js");
+
+const clientScriptPlugin = {
+  name: "stream-vibe-client-script",
+  config(_config, { command, isSsrBuild }) {
+    if (command !== "build" || isSsrBuild) return;
+
+    return {
+      build: {
+        rolldownOptions: {
+          input: { client: clientEntry },
+        },
+      },
+    };
+  },
+  generateBundle(_options, bundle) {
+    const clientChunk = Object.values(bundle).find(
+      (item) =>
+        item.type === "chunk" &&
+        item.facadeModuleId &&
+        path.resolve(item.facadeModuleId) === clientEntry,
+    );
+
+    if (!clientChunk) return;
+
+    const scriptTag = `<script type="module" src="/${clientChunk.fileName}"></script>`;
+    for (const item of Object.values(bundle)) {
+      if (item.type !== "asset" || !item.fileName.endsWith(".html")) continue;
+
+      item.source = String(item.source).replace(
+        /<script src="\/src\/main\.js" type="module"><\/script>/,
+        scriptTag,
+      );
+    }
+  },
+};
+
+export default defineConfig(() => ({
   plugins: [
     pluginSsg({ layout: "/src/global.jsx" }),
     pluginBundle({
       src: ["/src/global.jsx", "/src/pages/**/*.{tsx,jsx,mdx}"],
     }),
+    clientScriptPlugin,
     pluginSprite(),
     pluginImage(),
     ,
   ],
   root: "",
-  base: command === "serve" ? "/" : "/stream-vibe/",
+  // Keep generated asset URLs valid in `minista preview`, which serves `dist`
+  // from the origin root. A project subpath here makes every CSS/JS asset 404.
+  base: "/",
   public: "public",
   out: "dist",
   assets: {
