@@ -56,9 +56,8 @@ export default defineConfig(() => ({
     ,
   ],
   root: "",
-  // Keep generated asset URLs valid in `minista preview`, which serves `dist`
-  // from the origin root. A project subpath here makes every CSS/JS asset 404.
-  base: "/",
+  // GitHub Pages serves this project from a subpath; local preview serves from root.
+  base: process.env.GITHUB_ACTIONS === "true" ? "/stream-vibe/" : "/",
   public: "public",
   out: "dist",
   assets: {
