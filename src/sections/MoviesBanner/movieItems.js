@@ -1,3 +1,7 @@
+import avengersBanner from "@/assets/images/moviesBanner/avengers.jpg";
+import kantaraBanner from "@/assets/images/moviesBanner/kantara.jpg";
+import strangerThingsBanner from "@/assets/images/moviesBanner/stranger-things.jpg";
+
 const movieItems = [
   {
     title: "Avengers : Endgame",
@@ -5,7 +9,7 @@ const movieItems = [
     videoSrc: "/videos/example.mp4",
     description:
       "With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos's actions and undo the chaos to the universe, no matter what consequences may be in store, and no matter who they face... Avenge the fallen.",
-    bannerSrc: "/src/assets/images/moviesBanner/avengers.jpg",
+    bannerSrc: avengersBanner,
     releasedYear: "2022",
     availableLanguages: ["English", "Hindi", "Tamil", "Telugu", "Kannada"],
     ratings: [
@@ -91,7 +95,7 @@ const movieItems = [
     videoSrc: "/videos/example.mp4",
     description:
       "A fiery young man clashes with an unflinching forest officer in a south Indian village where spirituality, fate and folklore rule the lands.",
-    bannerSrc: "/src/assets/images/moviesBanner/kantara.jpg",
+    bannerSrc: kantaraBanner,
     releasedYear: "2022",
     availableLanguages: ["English", "Hindi", "Tamil", "Telugu", "Kannada"],
     ratings: [
@@ -177,7 +181,7 @@ const movieItems = [
     videoSrc: "/videos/example.mp4",
     description:
       "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.",
-    bannerSrc: "/src/assets/images/moviesBanner/stranger-things.jpg",
+    bannerSrc: strangerThingsBanner,
     releasedYear: "2016",
     availableLanguages: ["English", "Hindi", "Tamil", "Telugu", "Kannada"],
     ratings: [
