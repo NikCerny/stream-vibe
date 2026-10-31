@@ -1,6 +1,5 @@
 import Link from "@/components/Link";
 import "./Questions.scss";
-import withBase from "@/utils/withBase";
 import Section from "@/layouts/Section";
 import AccordionGroup from "@/components/AccordionGroup";
 import Accordion from "@/components/Accordion";
@@ -13,7 +12,7 @@ const Questions = () => {
     <Link
       className="questions__button button"
       content="Ask a Question"
-      href={withBase("support")}
+      href="/support"
     ></Link>
   );
   const questionItems = [
