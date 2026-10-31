@@ -17,7 +17,7 @@ const Badge = (props) => {
     <Icon className="badge__icon" name={iconName} hasFill></Icon>
   );
   return (
-    <div
+    <span
       className={classNames(
         "badge",
         className,
@@ -28,7 +28,7 @@ const Badge = (props) => {
       {iconPosition === "before" && iconComponent}
       {children}
       {iconPosition === "after" && iconComponent}
-    </div>
+    </span>
   );
 };
 

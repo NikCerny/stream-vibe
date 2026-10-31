@@ -13,6 +13,11 @@
 
     @include tablet {
       --gridCols: 2;
+
+      .grid__item:nth-child(odd):last-child {
+        grid-column: -1 / 1;
+        justify-self: center;
+      }
     }
 
     @include mobile {

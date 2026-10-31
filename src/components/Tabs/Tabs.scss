@@ -1,5 +1,7 @@
 .tabs {
   --tabsDisplay: none;
+  display: grid;
+  row-gap: 20px;
 
   &--enable-only-on-mobile {
     @include mobile-above {

@@ -10,8 +10,10 @@
     align-items: center;
 
     &:has(.section__subtitle) {
-      .section__actions {
-        align-self: flex-end;
+      @include mobile-above {
+        .section__actions {
+          align-self: flex-end;
+        }
       }
     }
 
