@@ -2,6 +2,10 @@
 
 A responsive frontend project for a streaming service, built with React, SCSS, and JavaScript, with a focus on accessibility.
 
+## Live Demo
+
+[Open Stream Vibe](https://nikcerny.github.io/stream-vibe/)
+
 ## About
 
 Stream Vibe is a practice frontend project based on a [Figma design](https://www.figma.com/design/uIo0pJQqAJCvSyyPQonMZQ).
