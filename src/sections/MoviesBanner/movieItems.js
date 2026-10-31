@@ -1,12 +1,13 @@
 import avengersBanner from "@/assets/images/moviesBanner/avengers.jpg";
 import kantaraBanner from "@/assets/images/moviesBanner/kantara.jpg";
 import strangerThingsBanner from "@/assets/images/moviesBanner/stranger-things.jpg";
+import withBase from "@/utils/withBase";
 
 const movieItems = [
   {
     title: "Avengers : Endgame",
     isShow: false,
-    videoSrc: "/videos/example.mp4",
+    videoSrc: withBase("videos/example.mp4"),
     description:
       "With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos's actions and undo the chaos to the universe, no matter what consequences may be in store, and no matter who they face... Avenge the fallen.",
     bannerSrc: avengersBanner,
@@ -92,7 +93,7 @@ const movieItems = [
   {
     title: "Kantara",
     isShow: false,
-    videoSrc: "/videos/example.mp4",
+    videoSrc: withBase("videos/example.mp4"),
     description:
       "A fiery young man clashes with an unflinching forest officer in a south Indian village where spirituality, fate and folklore rule the lands.",
     bannerSrc: kantaraBanner,
@@ -178,7 +179,7 @@ const movieItems = [
   {
     title: "Stranger Things",
     isShow: true,
-    videoSrc: "/videos/example.mp4",
+    videoSrc: withBase("videos/example.mp4"),
     description:
       "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.",
     bannerSrc: strangerThingsBanner,

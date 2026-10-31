@@ -1,4 +1,5 @@
 import "./CategoryCard.scss";
+import withBase from "@/utils/withBase";
 import { Image } from "minista/assets";
 import Icon from "@/components/Icon";
 import classNames from "classnames";
@@ -12,7 +13,7 @@ const CategoryCard = (props) => {
   } = props;
 
   return (
-    <a className={classNames("category-card")} href="/movies">
+    <a className={classNames("category-card")} href={withBase("movies")}>
       <div className="category-card__images">
         {images.map((imgSrc) => (
           <div className="category-card__image-wrapper" key={imgSrc}>

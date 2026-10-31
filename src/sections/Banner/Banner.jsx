@@ -1,4 +1,5 @@
 import "./Banner.scss";
+import withBase from "@/utils/withBase";
 import Link from "@/components/Link";
 
 const Banner = (props) => {
@@ -19,7 +20,7 @@ const Banner = (props) => {
         </div>
         <Link
           content="Start A Free Trial"
-          href="/subscriptions"
+          href={withBase("subscriptions")}
           className="button banner__button"
         ></Link>
       </div>

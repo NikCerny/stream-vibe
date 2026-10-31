@@ -1,4 +1,5 @@
 import "./DeviceCard.scss";
+import withBase from "@/utils/withBase";
 
 const DeviceCard = (props) => {
   const { title, description, src } = props;
@@ -7,7 +8,7 @@ const DeviceCard = (props) => {
       <header className="device-card__header">
         <div className="device-card__image-wrapper">
           <img
-            src={src}
+            src={withBase(src)}
             alt=""
             className="device-card__image"
             width={40}

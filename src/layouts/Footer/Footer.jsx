@@ -1,4 +1,5 @@
 import "./Footer.scss";
+import withBase from "@/utils/withBase";
 import Socials from "@/components/Socials";
 
 const Footer = (props) => {
@@ -36,7 +37,7 @@ const Footer = (props) => {
   const extraLinks = ["Terms of Use", "Privacy Policy", "Cookie Policy"];
 
   const extraLinksList = extraLinks.map((link) => (
-    <a href="/" className="footer__extra-link" key={link}>
+    <a href={withBase("/")} className="footer__extra-link" key={link}>
       {link}
     </a>
   ));
@@ -44,7 +45,7 @@ const Footer = (props) => {
   const createMenuItems = (links) => {
     return links.map((link) => (
       <li className="footer__menu-item" key={link}>
-        <a href="/" className="footer__menu-link">
+        <a href={withBase("/")} className="footer__menu-link">
           {link}
         </a>
       </li>
@@ -54,7 +55,7 @@ const Footer = (props) => {
   const createMenuColumns = menuItems.map(({ title, links, socialLinks }) => {
     return (
       <div className="footer__menu-column" key={title}>
-        <a href="/" className="footer__menu-title h6">
+        <a href={withBase("/")} className="footer__menu-title h6">
           {title}
         </a>
         {links?.length > 0 && (

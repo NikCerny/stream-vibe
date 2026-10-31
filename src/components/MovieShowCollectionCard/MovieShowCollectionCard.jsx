@@ -1,4 +1,5 @@
 import "./MovieShowCollectionCard.scss";
+import withBase from "@/utils/withBase";
 import { Image } from "minista/assets";
 import RatingStars from "@/components/RatingStars";
 import Badge from "@/components/Badge";
@@ -73,7 +74,7 @@ const MovieShowCollectionCard = (props) => {
   );
 
   return (
-    <a className="collection-card" href="/movies">
+    <a className="collection-card" href={withBase("movies")}>
       <Image className="collection-card__image" src={image} loading="lazy" />
 
       <div className="collection-card__body">

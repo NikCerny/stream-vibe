@@ -136,4 +136,21 @@ const seasonItems = [
   },
 ];
 
-export default seasonItems;
+const withBasePaths = (items) =>
+  items.map((season) => ({
+    ...season,
+    episodes: season.episodes.map((episode) => ({
+      ...episode,
+      video: {
+        ...episode.video,
+        src: episode.video.src.startsWith("/")
+          ? `${import.meta.env.BASE_URL}${episode.video.src.slice(1)}`
+          : episode.video.src,
+        poster: episode.video.poster.startsWith("/")
+          ? `${import.meta.env.BASE_URL}${episode.video.poster.slice(1)}`
+          : episode.video.poster,
+      },
+    })),
+  }));
+
+export default withBasePaths(seasonItems);

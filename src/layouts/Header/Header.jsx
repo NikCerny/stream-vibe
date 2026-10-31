@@ -3,6 +3,7 @@ import "./Header.scss";
 import Button from "@/components/Button";
 import Link from "@/components/Link";
 import BurgerButton from "@/components/BurgerButton";
+import withBase from "@/utils/withBase";
 
 const Header = (props) => {
   const { url, isHeaderPositionFixed } = props;
@@ -17,7 +18,7 @@ const Header = (props) => {
   const createItems = menuItems.map(({ label, href }) => (
     <li className="header__menu-item" key={href}>
       <a
-        href={href}
+        href={withBase(href)}
         className={classNames("header__menu-link link", {
           "is-active":
             href === url ||

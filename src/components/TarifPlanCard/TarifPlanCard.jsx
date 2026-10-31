@@ -1,4 +1,5 @@
 import "./TarifPlanCard.scss";
+import withBase from "@/utils/withBase";
 import Link from "@/components/Link";
 
 const TarifPlanCard = (props) => {
@@ -18,13 +19,13 @@ const TarifPlanCard = (props) => {
       <div className="plan-card__actions">
         <Link
           content="Start Free Trial"
-          href="/subscriptions"
+          href={withBase("subscriptions")}
           className="button"
           mode="black-08"
         ></Link>
         <Link
           content="Choose Plan"
-          href="/subscriptions"
+          href={withBase("subscriptions")}
           className="button plan-card__button--hover"
         ></Link>
       </div>

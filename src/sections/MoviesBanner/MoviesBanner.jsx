@@ -4,6 +4,7 @@ import Slider from "@/components/Slider";
 import SliderNavigation from "@/components/Slider/components/SliderNavigation";
 import movieItems from "./movieItems";
 import titleFormatted from "@/utils/titleFormatted";
+import withBase from "@/utils/withBase";
 
 const MoviesBanner = (props) => {
   const titleId = "movies-banner-title";
@@ -31,7 +32,7 @@ const MoviesBanner = (props) => {
             <MovieBannerCard
               {...item}
               videoSrc={undefined}
-              href={`/${item.isShow ? "show" : "movie"}/${titleFormatted(item.title)}`}
+              href={withBase(`${item.isShow ? "show" : "movie"}/${titleFormatted(item.title)}`)}
               key={index}
             />
           ))}

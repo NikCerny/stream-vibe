@@ -8,6 +8,8 @@ import {
 import path from "path";
 
 const clientEntry = path.resolve("src/main.js");
+const publicBase =
+  process.env.GITHUB_ACTIONS === "true" ? "/stream-vibe/" : "/";
 
 const clientScriptPlugin = {
   name: "stream-vibe-client-script",
@@ -32,7 +34,7 @@ const clientScriptPlugin = {
 
     if (!clientChunk) return;
 
-    const scriptTag = `<script type="module" src="/${clientChunk.fileName}"></script>`;
+    const scriptTag = `<script type="module" src="${publicBase}${clientChunk.fileName}"></script>`;
     for (const item of Object.values(bundle)) {
       if (item.type !== "asset" || !item.fileName.endsWith(".html")) continue;
 
@@ -57,7 +59,7 @@ export default defineConfig(() => ({
   ],
   root: "",
   // GitHub Pages serves this project from a subpath; local preview serves from root.
-  base: process.env.GITHUB_ACTIONS === "true" ? "/stream-vibe/" : "/",
+  base: publicBase,
   public: "public",
   out: "dist",
   assets: {
