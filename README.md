@@ -1,10 +1,10 @@
 ﻿# Stream Vibe
 
-A responsive frontend project for a streaming service, built with React, SCSS, and JavaScript.
+A responsive frontend project for a streaming service, built with React, SCSS, and JavaScript, with a focus on accessibility.
 
 ## About
 
-Stream Vibe is a practice frontend project based on a [Figma design](https://www.figma.com/design/YzTDRV7OaSoeCUBNYaoCZV).
+Stream Vibe is a practice frontend project based on a [Figma design](https://www.figma.com/design/uIo0pJQqAJCvSyyPQonMZQ).
 
 The project focuses on reusable UI components, a clear page and section structure, and responsive layouts.
 
@@ -65,3 +65,4 @@ npm run preview
 ## Author
 
 Nick Cerny
+
